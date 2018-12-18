@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="sep.Entity.Teacher" table="Teacher">
+        <meta attribute="class-description">
+            This class contains the teacher information.
+        </meta>
+        <id name="teacherId" type="int" column="teacherId">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="teacherName" type="string"/>
+
+        <set name="courseset" cascade="all" table="Teaches">
+            <key column = "teacherId"/>
+            <element column="courseId" type="int"></element>
+        </set>
+
+    </class>
+</hibernate-mapping>

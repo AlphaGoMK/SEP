@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="sep.Entity.Student" table="Student">
+        <meta attribute="class-description">
+            This class contains the student information.
+        </meta>
+        <id name="stuId" type="int" column="stuId">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="stuName" type="string"/>
+        <property name="score" column="score" type="double"/>
+        <property name="classid" column="classId" type="string"/>
+        <property name="password" column="password" type="string"/>
+
+        <map name="groupmap" cascade="all" table="grp">
+            <key column="stuId"/>
+            <index column="courseId" type="int"/>
+            <element column="grpId" type="string"/>
+        </map>
+
+        <set name="courseset" cascade="all" table="Take">
+            <key column = "stuId"/>
+            <element column="courseId" type="int"></element>
+        </set>
+
+    </class>
+</hibernate-mapping>
