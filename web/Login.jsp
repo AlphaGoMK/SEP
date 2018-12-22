@@ -17,7 +17,19 @@
         <input type="text" name="uid"/>
         <input type="password" name="passwd"/>
         <input type="submit" value="login"/>
+
     </form>
+
+    <%--<form method=post action="login">--%>
+        <%--<label>Log in</label>--%>
+        <%--<br/>--%>
+        <%--<input type="button" name="ACT0" value="Admin" onclick="issue()"/>--%>
+        <%--<br/>--%>
+        <%--<input type="button" name="ACT1" value="Stu" onclick="check()"/>--%>
+        <%--<br/>--%>
+        <%--<input type="button" name="ACT2" value="Tea" onclick="score()"/>--%>
+    <%--</form>--%>
+
 </body>
 </html>
 
