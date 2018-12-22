@@ -82,5 +82,27 @@ public class StudentDAO {
         }
     }
 
+    public boolean checkExistence(Integer stuId, String password) {
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try {
+            tx = sess.beginTransaction();
+            Student stu = (Student)sess.get(Student.class, stuId);
+            if (stu == null) {
+                return false;
+            } else {
+                if (stu.getPassword().equals(password))
+                    return true;
+            }
+            return false;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
+            sess.close();
+        }
+    }
+
 }
 

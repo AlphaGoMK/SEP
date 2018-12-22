@@ -79,5 +79,29 @@ public class TeacherDAO {
             sess.close();
         }
     }
+
+    public boolean checkExistence(Integer teacherId, String password) {
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try {
+            tx = sess.beginTransaction();
+            Teacher teacher = (Teacher)sess.get(Teacher.class, teacherId);
+            if (teacher == null) {
+                return false;
+            } else {
+                System.out.println(teacher.getPassword());
+                if (teacher.getPassword().equals(password)) {
+                    return true;
+                }
+            }
+            return false;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
+            sess.close();
+        }
+    }
 }
 

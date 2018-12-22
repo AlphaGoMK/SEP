@@ -44,5 +44,6 @@
     <orderEntry type="library" exported="" name="Hibernate 5.3.7-5.3.7" level="project" />
     <orderEntry type="library" exported="" name="Struts 2-2.5.14.1" level="project" />
     <orderEntry type="library" name="poi" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.13" level="project" />
   </component>
 </module>
