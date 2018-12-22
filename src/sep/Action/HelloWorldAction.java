@@ -7,7 +7,7 @@ public class HelloWorldAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        return SUCCESS;
+        return "success";
     }
     public String getName() {
         return name;

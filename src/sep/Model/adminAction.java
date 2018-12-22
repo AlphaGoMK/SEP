@@ -3,6 +3,8 @@ package sep.Model;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
+import sep.Entity.Student;
+import sep.Entity.Teacher;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -102,9 +104,42 @@ public class adminAction {
         }
 
         if(res!=null){
-            //TODO: DAO
+            //TODO: teacher DAO
+        }
+    }
+
+    public void importStudent(String excelfile) throws IOException{
+        List<InitInfo> res=new ArrayList<InitInfo>();
+        try{
+            res=op.importExcel(excelfile);
+        } catch(Exception e){
+            e.printStackTrace();
         }
 
+        if(res!=null){
+            //TODO: stu DAO
+        }
+    }
+
+    public int getUserType(int uid){
+
+        // TODO: 1 for taecher, 2 for student
+
+        String s=Integer.toString(uid);
+        if(s.charAt(0)=='1'){
+            return 1;
+        }
+        else return 2;
+    }
+
+    public Teacher getTeacherById(int id){
+        // TODO: DAO
+        return null;
+    }
+
+    public Student getStudentById(int id){
+        // TODO: DAO
+        return null;
     }
 
 }
