@@ -7,6 +7,7 @@ import java.util.Set;
 public class Teacher {
     private int teacherId;
     private String name;
+    private String password;
     private Set<Integer> courseset=new HashSet<Integer>();
 
     public Teacher(){}
@@ -27,6 +28,9 @@ public class Teacher {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getPassword() {return password;}
+    public void setPassword(String password) {this.password = password;}
 
     public Set<Integer> getCourseset() {
         return courseset;

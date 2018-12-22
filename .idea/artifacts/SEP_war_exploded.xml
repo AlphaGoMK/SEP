@@ -12,6 +12,7 @@
           <element id="library" level="project" name="Hibernate 5.3.7-5.3.7" />
           <element id="library" level="project" name="poi" />
           <element id="library" level="project" name="Spring-4.3.18.RELEASE" />
+          <element id="library" level="project" name="mysql-connector-java-8.0.13" />
         </element>
       </element>
     </root>
