@@ -15,19 +15,26 @@
             <action name="login"
                     class="sep.Action.LoginAction"
                     method="execute">
-                <result name="success">/Main.jsp</result>
+                <result name="teacher">/TeacherMain.jsp</result>
+                <result name="student">/StudentMain.jsp</result>
+                <result name="admin">/AdminMain.jsp</result>
                 <result name="error">/Error.jsp</result>
+                <result name="success">/AdminMain.jsp</result>
             </action>
+
             <action name="select"
                     class="sep.Action.SelectAction"
                     method="execute">
                 <result name="success">/Login.jsp</result>
                 <result name="error">/Error.jsp</result>
             </action>
-            <action name="check"
-                    class="sep.Action.LoginAction"
-                    method="check">
-                <result name="chk">/Check.jsp</result>
+
+
+            <action name="importT"
+                    class="sep.Action.InitImportExcelAction"
+                    method="execute">
+                <result name="success">/TeacherMain.jsp</result>
+                <result name="error">/Error.jsp</result>
             </action>
         </package>
 

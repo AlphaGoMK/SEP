@@ -2,6 +2,7 @@
   <library name="poi">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/poi.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-8.0.13.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
