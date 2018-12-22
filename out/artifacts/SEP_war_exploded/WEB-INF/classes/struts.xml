@@ -15,9 +15,12 @@
             <action name="login"
                     class="sep.Action.LoginAction"
                     method="execute">
-                <result name="success">/Main.jsp</result>
+                <result name="teacher">/Main.jsp</result>
+                <result name="student">/Main.jsp</result>
+                <result name="admin">/Main.jsp</result>
                 <result name="error">/Error.jsp</result>
             </action>
+
             <action name="select"
                     class="sep.Action.SelectAction"
                     method="execute">

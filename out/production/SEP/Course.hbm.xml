@@ -21,7 +21,7 @@
         <list name="homework" cascade="all">
             <key column="courseId"/>
             <list-index column="idx"/>
-            <one-to-many class="Entity.Homework"/>
+            <one-to-many class="sep.Entity.Homework"/>
         </list>
     </class>
 </hibernate-mapping>

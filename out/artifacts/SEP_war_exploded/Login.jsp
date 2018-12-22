@@ -17,9 +17,7 @@
         <input type="text" name="uid"/>
         <input type="password" name="passwd"/>
         <input type="submit" value="login"/>
-
     </form>
-
 </body>
 </html>
 
