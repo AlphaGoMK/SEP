@@ -6,28 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd7c07db-c4f2-433c-ae6c-d9b274d31a9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/out/artifacts/SEP_war_exploded/AdminMain.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/SEP_war_exploded/StudentMain.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sep/Action/InitImportExcelAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sep/Model/adminAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ttt.xls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/AdminMain.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/StudentMain.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SEP_war_exploded/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SEP_war_exploded/Login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SEP_war_exploded/Main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SEP_war_exploded/TeacherMain.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SEP_war_exploded/WEB-INF/classes/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SEP_war_exploded/WEB-INF/classes/struts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SEP_war_exploded/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SEP_war_exploded/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SEP/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEP/struts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sep/Model/teacherAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sep/Model/teacherAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/struts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/Login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/Main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/TeacherMain.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="fd7c07db-c4f2-433c-ae6c-d9b274d31a9b" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -150,6 +129,13 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-1943548676">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
@@ -170,8 +156,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sep/Action/InitImportExcelAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+            <state relative-caret-position="155">
+              <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -284,7 +270,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545469035035" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545472179703" />
     <property name="last_opened_file_path" value="$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.13/mysql-connector-java-8.0.13.jar" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -406,7 +392,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13932000" />
+    <option name="totallyTimeSpent" value="13998000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
