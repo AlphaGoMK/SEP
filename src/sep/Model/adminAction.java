@@ -55,14 +55,7 @@ class InitInfo{
 
 class InitExcel{
 
-    /**
-     * 导入excel文件，使用绝对路径
-     *
-     * @param file
-     * @param sheetIndex
-     * @return
-     * @throws IOException
-     */
+
     public static List<InitInfo> importExcel(String file, int sheetIndex) throws IOException {
         FileInputStream in = null;
         List<InitInfo> result = null;
