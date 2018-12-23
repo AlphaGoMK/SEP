@@ -49,17 +49,24 @@
             </action>
 
             <action name="EditUser"
-                    class="sep.Action.EditUserAction"
+                    class="sep.Action.FindUserAction"
                     method="edit">
                 <result name="success">/AdminMain.jsp</result>
                 <result name="error">/UserResult.jsp</result>
             </action>
 
             <action name="RemoveUser"
-                    class="sep.Action.EditUserAction"
+                    class="sep.Action.FindUserAction"
                     method="remove">
                 <result name="success">/AdminMain.jsp</result>
                 <result name="error">/UserResult.jsp</result>
+            </action>
+
+            <action name="AddUser"
+                    class="sep.Action.FindUserAction"
+                    method="add">
+                <result name="success">/UserResult.jsp</result>
+                <result name="error">/AddUser.jsp</result>
             </action>
         </package>
 

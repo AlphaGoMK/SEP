@@ -162,4 +162,13 @@ public class adminAction {
         }
     }
 
+    public String addUser(InitInfo i){
+        if(getUserType(i.getId())==1){
+            // TODO: DAO t
+        }
+        else{
+            // TODO: DAO s
+        }
+        return "success";
+    }
 }

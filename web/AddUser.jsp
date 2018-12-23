@@ -12,7 +12,14 @@
 </head>
 <body>
 
-    <%--TODO--%>
+
+    <form action="AddUser">
+        Id: <input type="text" name="usr.id"/>
+        Name: <input type="text" name="usr.name"/>
+        Password: <input id="pwd1" type="text" name="usr.password"/>
+        Confirm Password: <input id="pwd2" type="text" name="repwd"/>
+        <input type="submit" value="ADD" />
+    </form>
 
 </body>
 </html>

@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 
 public class InitImportExcelAction extends ActionSupport {
     private String excelfilename;
-    private adminAction op;
+    private adminAction op=new adminAction();
 
 
     public String getExcelfilename() {

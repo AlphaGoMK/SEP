@@ -11,6 +11,7 @@
     <title>Find User</title>
 </head>
 <body>
+
     <form action="FindUser">
         <input type="text" name="uid">
         <input type="submit" value="Search"/>

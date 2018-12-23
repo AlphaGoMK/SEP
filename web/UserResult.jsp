@@ -13,7 +13,6 @@
 </head>
 <body>
 
-
     User ID <s:property value="uid"/>
     User Type <s:property value="flag"/>
 
