@@ -12,23 +12,30 @@
     <title>User Result</title>
 </head>
 <body>
-User ID <s:property value="uid"/>
-User Type <s:property value="flag"/>
 
-<%--TODO: additional info to be added--%>
 
-<%--TODO: QUESTIONED?--%>
-<%--default value--%>
-<input type="text" value="${uname}"
-       onfocus="if(value=='${uname}'){value=''}"
-       onblur="if(value==''){value='${uname}'}"/>
+    User ID <s:property value="uid"/>
+    User Type <s:property value="flag"/>
 
-<form action="FindResultAct">
-    <input type="button" name="ACT0" value="Edit" onclick="editInfo"/>
-    <input type="button" name="ACT1" value="Remove" onclick="removeInfo"/>
-</form>
+    <%--TODO: additional info to be added--%>
 
-<%--TODO: edit info, remove info--%>
+    <%--TODO: QUESTIONED?--%>
+    <%--default value--%>
+    <input type="text" value="${usr.getName()}"
+           onfocus="if(value=='${usr.getName()}'){value=''}"
+           onblur="if(value==''){value='${usr.getName()}'}"/>
+
+
+    <form action="EditUser">
+        <input type="submit" value="Edit"/>
+    </form>
+    <form action="RemoveUser">
+        <input type="submit" value="Remove"/>
+    </form>
+
+
+
+    <%--TODO: edit info, remove info--%>
 
 </body>
 </html>

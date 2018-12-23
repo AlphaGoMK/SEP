@@ -47,6 +47,20 @@
                     method="execute">
                 <result name="success">/UserResult.jsp</result>
             </action>
+
+            <action name="EditUser"
+                    class="sep.Action.EditUserAction"
+                    method="edit">
+                <result name="success">/AdminMain.jsp</result>
+                <result name="error">/UserResult.jsp</result>
+            </action>
+
+            <action name="RemoveUser"
+                    class="sep.Action.EditUserAction"
+                    method="remove">
+                <result name="success">/AdminMain.jsp</result>
+                <result name="error">/UserResult.jsp</result>
+            </action>
         </package>
 
 
