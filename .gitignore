@@ -25,4 +25,8 @@ hs_err_pid*
 
 # ingore out/
 out/
+lib/
+
+SEP.iml
+
 *.iml
