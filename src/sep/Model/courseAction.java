@@ -10,7 +10,7 @@ public class courseAction {
         return null;
     }
 
-    public Group getGrpById(int courseId, String groupId){
+    public Group getGrpById(int courseId, Integer groupId){
         Course c=getCourseById(courseId);
         return c.getGrpById(groupId);
     }

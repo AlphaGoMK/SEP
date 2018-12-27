@@ -1,6 +1,9 @@
 package sep.Entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import java.util.*;
 
 import static java.lang.Math.abs;
@@ -13,7 +16,7 @@ public class Student {
     private String classid;
     private String password;
     // courseId - groupId
-    private Map<Integer, String> groupmap=new HashMap<Integer, String>();
+    private Map<Integer, Integer> groupmap=new HashMap<Integer,Integer>();
     private Set<Integer> courseset=new HashSet<Integer>();
 
     public Student(){}
@@ -51,22 +54,21 @@ public class Student {
         this.classid = classid;
     }
 
-
-    public Map<Integer, String> getGroupmap(){
+    public Map<Integer, Integer> getGroupmap(){
         return groupmap;
     }
-    public void setGroupmap(Map<Integer, String> groupmap){
+    public void setGroupmap(Map<Integer, Integer> groupmap){
         this.groupmap=groupmap;
     }
     public void clearGroupmap(){
         groupmap.clear();
     }
-    public String getGroupId(Integer course){
+    public Integer getGroupId(Integer course){
         if(groupmap.containsKey(course)) return groupmap.get(course);
         else return null;
     }
-    public void setGroupId(Integer course, String Id){
-        groupmap.put(course, Id);
+    public void setGroupId(Integer course, Integer grpId){
+        groupmap.put(course, grpId);
     }
 
     public Set<Integer> getCourseset(){

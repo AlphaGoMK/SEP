@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 import java.util.List;
 
 public class TeacherDAO {
-    public List<Teacher> getTeacherList() {
+    public static List<Teacher> getTeacherList() {
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
         try {
@@ -24,7 +24,7 @@ public class TeacherDAO {
         }
     }
 
-    public boolean deleteTeacher(int teacherId) {
+    public static boolean deleteTeacher(int teacherId) {
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
         try {
@@ -42,7 +42,7 @@ public class TeacherDAO {
         }
     }
 
-    public Teacher addTeacher(String teacherName){
+    public static Teacher addTeacher(String teacherName){
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
         try {
@@ -61,7 +61,7 @@ public class TeacherDAO {
         }
     }
 
-    public boolean addCourse(Integer teacherId, Integer courseId) {
+    public static boolean addCourse(Integer teacherId, Integer courseId) {
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
         try {
@@ -80,7 +80,25 @@ public class TeacherDAO {
         }
     }
 
-    public boolean checkExistence(Integer teacherId, String password) {
+    public static Teacher getTeacherbyId(Integer teacherId) {
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try {
+            tx = sess.beginTransaction();
+            Teacher teacher = (Teacher)sess.get(Teacher.class, teacherId);
+            sess.update(teacher);
+            tx.commit();
+            return teacher;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return null;
+        } finally {
+            sess.close();
+        }
+    }
+
+    public static boolean checkExistence(Integer teacherId, String password) {
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
         try {

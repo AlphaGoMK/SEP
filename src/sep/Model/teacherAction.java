@@ -113,12 +113,12 @@ public class teacherAction {
         c.addHome(name, content, deadline, percentage);
     }
 
-    public Pair<Date, String> getSubmit(int courseId, String grpId, String homework){
-        return new Pair<Date, String>(courseaction.getCourseById(courseId).getGrpById(grpId).getSubmitTimeByName(homework),
-                                    courseaction.getCourseById(courseId).getGrpById(grpId).getSubmitPathByName(homework));
-        
-    }
-    public void rankHomework(int courseId, String grpId, String homework, double grade){
+//    public Pair<Date, String> getSubmit(int courseId, Integer grpId, String homework){
+//        return new Pair<Date, String>(courseaction.getCourseById(courseId).getGrpById(grpId).getSubmitTimeByName(homework),
+//                                    courseaction.getCourseById(courseId).getGrpById(grpId).getSubmitPathByName(homework));
+//
+//    }
+    public void rankHomework(int courseId, Integer grpId, String homework, double grade){
 
         courseaction.getCourseById(courseId).getGrpById(grpId).addScore(homework, grade);
     }

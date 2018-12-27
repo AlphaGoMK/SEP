@@ -18,7 +18,7 @@ public class studentAction {
         return null;
     }
 
-    public String getStuGrpId(int stuId, int courseId){
+    public Integer getStuGrpId(int stuId, int courseId){
         return getStuById(stuId).getGroupId(courseId);
     }
 
@@ -37,7 +37,7 @@ public class studentAction {
         return res;
     }
 
-    public Homework getRecentHome(int courseId, String grpId){
+    public Homework getRecentHome(int courseId, Integer grpId){
         Homework cur=null;
         Course c=courseaction.getCourseById(courseId);
         for(int i=0;i<c.getHomeNum();i++){
@@ -48,28 +48,29 @@ public class studentAction {
     }
 
     // all submitted homework
-    public List<Pair<Date, String>> getSubmitById(String grpId, int courseId){
-        Group g=courseaction.getGrpById(courseId,grpId);
-        List<Pair<Date, String>> submits=new ArrayList<Pair<Date, String>>();
-        Set<String> entry=g.getSubmit().keySet();
-        Iterator<String> it=entry.iterator();
-        while(it.hasNext()){
-            String k=it.next();
-            Pair<Date, String> tmp=new Pair<Date, String>(g.getSubmitTimeByName(k), g.getSubmitPathByName(k));
-            submits.add(tmp);
-        }
+//    public List<Pair<Date, String>> getSubmitById(Integer grpId, int courseId){
+//        Group g=courseaction.getGrpById(courseId,grpId);
+//        List<Pair<Date, String>> submits=new ArrayList<Pair<Date, String>>();
+//        Set<String> entry=g.getSubmit().keySet();
+//        Iterator<String> it=entry.iterator();
+//        while(it.hasNext()){
+//            String k=it.next();
+//            Pair<Date, String> tmp=new Pair<Date, String>(g.getSubmitTimeByName(k), g.getSubmitPathByName(k));
+//            submits.add(tmp);
+//        }
+//
+//        return submits;
+//    }
 
-        return submits;
-    }
-    // get submitted homework
-    public Pair<Date, String> getSubmitByHome(String grpId, int courseId, String home){
-        if(!courseaction.getGrpById(courseId, grpId).containSubmit(home)) return null;
-        Pair<Date, String> res=new Pair<Date, String>(courseaction.getGrpById(courseId, grpId).getSubmitTimeByName(home),
-                courseaction.getGrpById(courseId, grpId).getSubmitPathByName(home));
-        return res;
-    }
+//    // get submitted homework
+//    public Pair<Date, List<String>> getSubmitByHome(Integer grpId, int courseId, String home){
+//        if(!courseaction.getGrpById(courseId, grpId).containSubmit(home)) return null;
+//        Pair<Date, List<String>> res=new Pair<Date, String>(courseaction.getGrpById(courseId, grpId).getSubmitTimeByName(home),
+//                courseaction.getGrpById(courseId, grpId).getSubmitPathByName(home));
+//        return res;
+//    }
 
-    public void addStuToGroup(int stuId, int courseId, String groupId){
+    public void addStuToGroup(int stuId, int courseId, Integer groupId){
         Group grp=courseaction.getCourseById(courseId).getGrpById(groupId);
         grp.addStu(stuId);
     }
@@ -94,22 +95,22 @@ public class studentAction {
         // TODO: DAO
     }
 
-    public void submitHome(String grpId, int courseId, String hname, String path){
+    public void submitHome(Integer grpId, int courseId, String hname, String path){
         Group tmp=courseaction.getGrpById(courseId,grpId);
         tmp.addSubmit(hname, path); // current time
     }
 
-    public void setContrib(String grpId, int courseId, Map<Integer, Double> contrib_table){
+    public void setContrib(Integer grpId, int courseId, Map<Integer, Double> contrib_table){
         Group tmp=courseaction.getGrpById(courseId, grpId);
         tmp.setContrib(contrib_table);
     }
 
-    public void setContrib(String grpId, int courseId, int stuId, double contrib){
+    public void setContrib(Integer grpId, int courseId, int stuId, double contrib){
         Group tmp=courseaction.getGrpById(courseId, grpId);
         tmp.setStuContrib(stuId, contrib);
     }
 
-    public double calcGrpScore(String grpId, int courseId){
+    public double calcGrpScore(Integer grpId, int courseId){
         Group tmp=courseaction.getGrpById(courseId, grpId);
         tmp.calcAvg();
         return tmp.getTotalScore();

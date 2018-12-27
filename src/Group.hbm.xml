@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="sep.Entity.Group" table="ggroup">
+        <id name="id" type="int" column="grpId">
+            <generator class="native"/>
+        </id>
+        <!--In fact, this is the group name-->
+        <property name="groupId" column="groupId" type="string"/>
+        <property name="totalscore" column="totalscore" type="double" not-null="false"/>
+        <property name="courseID" column="courseId" type="int"/>
+        <property name="leaderId" column="leaderId" type="int"/>
+        <property name="contact" column="contact" type="string"/>
+
+        <map name="submit" cascade="all" lazy="false">
+            <key column="grpId"/>
+            <index column="hwname" type="string"/>
+            <one-to-many class="sep.Entity.MySubmit"/>
+        </map>
+
+        <map name="contrib" cascade="all" lazy="false">
+            <key column="grpId"/>
+            <index column="stuId" type="int"/>
+            <element column="contribution" type="double"/>
+        </map>
+
+        <set name="stulist" cascade="all" lazy="false">
+            <key column="grpId"/>
+            <element column="stuId" type="int"/>
+        </set>
+
+        <map name="score" cascade="all" lazy="false">
+            <key column="grpId"/>
+            <index column="hwname" type="string"/>
+            <element column="score" type="double"/>
+        </map>
+
+    </class>
+</hibernate-mapping>

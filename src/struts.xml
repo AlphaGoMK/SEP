@@ -29,12 +29,37 @@
                 <result name="error">/Error.jsp</result>
             </action>
 
+            <action name="showCourse"
+                    class="sep.Action.ShowCourseAction"
+                    method="execute">
+                <result name="success">/StudentShowCourses.jsp</result>
+            </action>
+
+            <action name="showGroupAndHome"
+                    class="sep.Action.ShowGroupAndHomeAction"
+                    method="execute">
+                <result name="success">/StuGroupAndHomework.jsp</result>
+            </action>
 
             <action name="importT"
                     class="sep.Action.InitImportExcelAction"
                     method="execute">
                 <result name="success">/TeacherMain.jsp</result>
                 <result name="error">/Error.jsp</result>
+            </action>
+
+            <action name="submitHomework"
+                    class="sep.Action.SubmitHomeAction"
+                    method="execute">
+                <result name="success">/SubmitHomeSuccess.jsp</result>
+                <!--错误处理-->
+            </action>
+
+            <action name="createGroup"
+                    class="sep.Action.CreateGroupAction"
+                    method="execute">
+                <result name="success">/createGroup.jsp</result>
+                <!--错误处理-->
             </action>
         </package>
 

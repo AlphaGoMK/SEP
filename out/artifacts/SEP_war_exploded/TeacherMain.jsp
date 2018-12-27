@@ -12,14 +12,6 @@
 </head>
 <body>
 
-    <%--<script type="text/javascript">--%>
-        <%--function check(){--%>
-            <%--window.alert(111);--%>
-            <%--myform.action="check.action";--%>
-            <%--myform.submit();--%>
-        <%--}--%>
-    <%--</script>--%>
-
     <script type="text/javascript">
         function issue(){
             window.location = "/Issue.jsp";

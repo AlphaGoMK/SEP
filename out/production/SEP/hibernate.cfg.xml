@@ -23,12 +23,15 @@
     <property name="hibernate.hbm2ddl.auto"> <!--Auto Create tables-->
       update
     </property>
+    <property name="hibernate.show_sql">true</property>
 
     <!--&lt;!&ndash;&lt;!&ndash; List of XML mapping files &ndash;&gt;&ndash;&gt;-->
+    <mapping resource="Group.hbm.xml"/>
     <mapping resource="Course.hbm.xml"/>
     <mapping resource="Homework.hbm.xml"/>
     <mapping resource="Student.hbm.xml"/>
     <mapping resource="Teacher.hbm.xml"/>
+    <mapping resource="MySubmit.hbm.xml"/>
 
   </session-factory>
 </hibernate-configuration>

@@ -11,7 +11,7 @@ public class ScoreHomeAction extends ActionSupport {
 
     private int courseId;
     private Homework homework;
-    private String grpid;
+    private Integer grpid;
     private courseAction courseaction=new courseAction();
 
     @Override

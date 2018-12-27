@@ -97,7 +97,7 @@ public class Course {
     public int getGrpNum(){
         return grp.size();
     }
-    public Group getGrpById(String grpId){
+    public Group getGrpById(Integer grpId){
         Group res;
         Iterator<Group> it=grp.iterator();
         while(it.hasNext()){
@@ -111,7 +111,7 @@ public class Course {
     public void addGrp(Group group){
         grp.add(group);
     }
-    public void removeGrpById(String grpId){
+    public void removeGrpById(Integer grpId){
         Group tmp=getGrpById(grpId);
         grp.remove(tmp);
     }
@@ -158,7 +158,7 @@ public class Course {
         h.setPercentage(per);
     }
 
-    public double getScoreById(int stuId, String grpId){
+    public double getScoreById(int stuId, Integer grpId){
         Group g=getGrpById(grpId);
         double grpscore=0.0,sumpercent=0.0;
         for(int i=0;i<getHomeNum();i++){

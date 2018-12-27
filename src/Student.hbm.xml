@@ -16,15 +16,15 @@
         <property name="classid" column="classId" type="string"/>
         <property name="password" column="password" type="string"/>
 
-        <map name="groupmap" cascade="all" table="grp">
+        <map name="groupmap" cascade="all" lazy="false">
             <key column="stuId"/>
             <index column="courseId" type="int"/>
-            <element column="grpId" type="string"/>
+            <element column="grpId" type="int"/>
         </map>
 
-        <set name="courseset" cascade="all" table="Take">
-            <key column = "stuId"/>
-            <element column="courseId" type="int"></element>
+        <set name="courseset" cascade="all" table="Take" fetch="join">
+            <key column="stuId"/>
+            <element column="courseId" type="int"/>
         </set>
 
     </class>

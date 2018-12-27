@@ -11,7 +11,7 @@ import java.util.List;
 public class CheckHomeAction extends ActionSupport {
     // input
     public int courseId;
-    public String grpId;
+    public Integer grpId;
 
     // set
     private List<String> unrankedhome;

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CourseDAO {
 
-    public List<Course> getCourseList(){
+    public static List<Course> getCourseList(){
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
         try {
@@ -25,7 +25,7 @@ public class CourseDAO {
         }
     }
 
-    public boolean deleteCourse(Integer courseId) {
+    public static boolean deleteCourse(Integer courseId) {
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
         try {
@@ -43,7 +43,7 @@ public class CourseDAO {
         }
     }
 
-    public Course addCourse(String name, String description, Integer teacherid, Integer maxcrew, Integer mincrew){
+    public static Course addCourse(String name, String description, Integer teacherid, Integer maxcrew, Integer mincrew){
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
         try {
@@ -51,6 +51,7 @@ public class CourseDAO {
             Course course = new Course(name, description, teacherid, maxcrew, mincrew);
             Integer courseId = (Integer)sess.save(course); // Auto create id
             course.setCourseId(courseId);
+            TeacherDAO.addCourse(teacherid, courseId);
             tx.commit();
             return course;
         } catch (HibernateException e) {
@@ -63,7 +64,7 @@ public class CourseDAO {
     }
 
     // Add Homework
-    public boolean addHomework(Integer courseId, String hwName, String content, Date deadline, double percentage) {
+    public static boolean addHomework(Integer courseId, String hwName, String content, Date deadline, double percentage) {
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
         try {
@@ -82,13 +83,31 @@ public class CourseDAO {
         }
     }
 
-    public List<Course> findByName(String courseName) {
+    public static List<Course> findByName(String courseName) {
         String hql = "FROM Course C WHERE C.name = " + courseName;
         Session sess = HibernateInit.getSession();
         TypedQuery<Course> query = sess.createQuery(hql);
         List<Course> res = query.getResultList();
         sess.close();
         return res;
+    }
+
+    public static Course getCoursebyId(Integer courseId) {
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try {
+            tx = sess.beginTransaction();
+            Course course = (Course)sess.get(Course.class, courseId);
+            sess.update(course);
+            tx.commit();
+            return course;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return null;
+        } finally {
+            sess.close();
+        }
     }
 
 }

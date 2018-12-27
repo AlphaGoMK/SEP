@@ -10,20 +10,20 @@ import java.util.*;
 public class ListAllStuAction extends ActionSupport {
     private int courseId;
     private courseAction courseaction=new courseAction();
-    private Map<String, Set<Integer>> stulist;
-    private List<String> grpname;
+    private Map<Integer, Set<Integer>> stulist;
+    private List<Integer> grpname;
 
     public void getAllGrp(){
-        grpname=new ArrayList<String>();
+        grpname=new ArrayList<Integer>();
         Set<Group> tmp=courseaction.getCourseById(courseId).getGrp();
         Iterator<Group> it=tmp.iterator();
         while(it.hasNext()){
-            grpname.add(it.next().getGroupId());
+            grpname.add(it.next().getId());
         }
     }
 
     public void getAllStu(){
-        stulist=new TreeMap<String, Set<Integer>>();
+        stulist=new TreeMap<Integer, Set<Integer>>();
         for(int i=0;i<grpname.size();i++){
             Set<Integer> li=courseaction.getGrpById(courseId, grpname.get(i)).getStulist();
             stulist.put(grpname.get(i),li);

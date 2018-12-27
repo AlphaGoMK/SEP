@@ -11,7 +11,7 @@ public class StuLookHomeAction extends ActionSupport {
     private int courseId;
     private int stuId;
     // set
-    private String grpId;
+    private Integer grpId;
     private Homework homework;
     private String name;
     private String content;
@@ -37,11 +37,11 @@ public class StuLookHomeAction extends ActionSupport {
         this.stuId = stuId;
     }
 
-    public String getGrpId() {
+    public Integer getGrpId() {
         return grpId;
     }
 
-    public void setGrpId(String grpId) {
+    public void setGrpId(Integer grpId) {
         this.grpId = grpId;
     }
 

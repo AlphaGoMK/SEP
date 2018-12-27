@@ -1,35 +1,14 @@
 package sep.Entity;
 
-import javafx.util.Pair;
-
-import java.io.File;
 import java.util.*;
-
-class MySubmit{
-    private Date date;
-    private String path;
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-}
 
 
 public class Group {
-    private String groupId;
-    private double totalscore=-1;
+
+    private int id;
+    private String groupId;  // group name in fact.
+    private double totalscore;
+
     private int courseID;
     private int leaderId;
     private String contact;
@@ -39,6 +18,34 @@ public class Group {
     private Set<Integer> stulist=new HashSet<Integer>();
     // homework name - score, homework-wise
     private Map<String, Double> score=new HashMap<String, Double>();
+
+    public Group(){}
+    public Group(String groupId, int courseID, int leaderId, String contact){
+        this.groupId = groupId;
+        this.courseID = courseID;
+        this.totalscore = 0.0;
+        this.leaderId = leaderId;
+        this.contact = contact;
+        this.stulist = new HashSet<Integer>();
+        this.submit = new HashMap<String, MySubmit>();
+        this.contrib = new HashMap<Integer, Double>();
+        this.score = new HashMap<String, Double>();
+        this.addStu(leaderId);
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getTotalscore() {
+        return totalscore;
+    }
+    public void setTotalscore(double totalscore) {
+        this.totalscore = totalscore;
+    }
 
     public String getGroupId() {
         return groupId;
@@ -81,10 +88,32 @@ public class Group {
     public Date getSubmitTimeByName(String name){
         return submit.get(name).getDate();
     }
-    public String getSubmitPathByName(String name){
-        return submit.get(name).getPath();
+    public List<String> getSubmitPathByName(String name){
+        return submit.get(name).getPathList();
     }
-    public List<String> getUnrankedSubmit(){
+
+    // added 12/23
+    public MySubmit getSubmitByName(String name){   // get submit using homework name
+        return submit.get(name);
+    }
+    public List<MySubmit> getUnranked(){    // get submit content
+        Set<String> skey=submit.keySet();
+        Iterator<String> it=skey.iterator();
+        List<MySubmit> res=new ArrayList<MySubmit>();
+        while(it.hasNext()){
+            String key=it.next();
+            if(!score.containsKey(key)){
+                res.add(submit.get(key));
+            }
+        }
+        return res;
+    }
+    public boolean isRanked(String name){
+        return submit.get(name).isRanked();
+    }
+
+
+    public List<String> getUnrankedSubmit(){    // get submit homework name
         Set<String> skey=submit.keySet();
         Iterator<String> it=skey.iterator();
         List<String> res=new ArrayList<String>();
@@ -102,13 +131,27 @@ public class Group {
     public int getSubmitNum(){
         return submit.size();
     }
-    public void addSubmit(String name, String path){    // add & modify
-        MySubmit tmp=new MySubmit();
-        Date cur=new Date();
-        tmp.setDate(cur);
-        tmp.setPath(path);
-        submit.put(name,tmp);
+    public void addSubmit(String name, String path){    // add & modify // homework name -- homework path
+        MySubmit tmp;
+        if (this.getSubmit().containsKey(name)) {
+            tmp = this.getSubmit().get(name);
+            if (tmp.getPathList().contains(path)) {
+                return;
+            } else {
+                tmp.addPath(path);
+            }
+        } else {
+            tmp = new MySubmit();
+            Date cur=new Date();
+            tmp.setDate(cur);
+            tmp.addPath(path);
+            tmp.setCourseId(this.getCourseID());
+            tmp.setGrpId(this.getId());
+            tmp.setHomeworkname(name);
+        }
+        this.submit.put(name, tmp);
     }
+
     public void removeSubmit(String name){
         submit.remove(name);
     }

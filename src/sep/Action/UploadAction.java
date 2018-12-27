@@ -30,6 +30,7 @@ public class UploadAction extends ActionSupport {
 
         return SUCCESS;
     }
+
     public File getMyFile() {
         return myFile;
     }

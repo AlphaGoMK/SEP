@@ -9,7 +9,7 @@ import java.util.List;
 
 public class StudentDAO {
 
-    public List<Student> getStudentList() {
+    public static List<Student> getStudentList() {
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
         try {
@@ -26,7 +26,7 @@ public class StudentDAO {
         }
     }
 
-    public boolean deleteStudent(int stuId) {
+    public static boolean deleteStudent(int stuId) {
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
         try {
@@ -44,7 +44,7 @@ public class StudentDAO {
         }
     }
 
-    public Student addStudent(String name, String classid){
+    public static Student addStudent(String name, String classid){
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
         try {
@@ -63,7 +63,7 @@ public class StudentDAO {
         }
     }
 
-    public boolean takeCourse(Integer stuId, Integer courseId) {
+    public static boolean takeCourse(Integer stuId, Integer courseId) {
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
         try {
@@ -82,12 +82,12 @@ public class StudentDAO {
         }
     }
 
-    public boolean checkExistence(Integer stuId, String password) {
+    public static boolean checkExistence(Integer stuId, String password) {
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
         try {
             tx = sess.beginTransaction();
-            Student stu = (Student)sess.get(Student.class, stuId);
+            Student stu = getStudentbyId(stuId);
             if (stu == null) {
                 return false;
             } else {
@@ -104,5 +104,39 @@ public class StudentDAO {
         }
     }
 
+    public static boolean joinGroup(Integer stuId, Integer courseId, Integer grpId) {
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try {
+            tx = sess.beginTransaction();
+            Student stu = (Student)sess.get(Student.class, stuId);
+            stu.setGroupId(courseId, grpId);
+            sess.update(stu);
+            tx.commit();
+            return true;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
+            sess.close();
+        }
+    }
+
+    public static Student getStudentbyId(Integer stuId) {
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try {
+            tx = sess.beginTransaction();
+            Student stu = (Student)sess.get(Student.class, stuId);
+            return stu;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return null;
+        } finally {
+            sess.close();
+        }
+    }
 }
 

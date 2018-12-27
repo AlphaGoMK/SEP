@@ -17,7 +17,6 @@
         <input type="text" name="uid"/>
         <input type="password" name="passwd"/>
         <input type="submit" value="login"/>
-
     </form>
 
     <%--<form method=post action="login">--%>
