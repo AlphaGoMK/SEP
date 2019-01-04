@@ -5,6 +5,8 @@ import sep.Entity.Group;
 
 public class courseAction {
 
+    private courseAction courseaction = new courseAction();
+
     public Course getCourseById(int courseId){
         // TODO DAO
         return null;
@@ -15,7 +17,7 @@ public class courseAction {
         return c.getGrpById(groupId);
     }
 
-    public static void setCourse(int name, int id, String desc, int teacherId){
+    public void createCourse(String name, int id, String desc, int teacherId){
         // TODO DAO
     }
 
@@ -24,5 +26,13 @@ public class courseAction {
         c.setGrpPrefix(prefix);
         c.setMaxcrew(maxcrew);
         c.setMincrew(mincrew);
-    } 
+    }
+
+    public courseAction getCourseaction() {
+        return courseaction;
+    }
+
+    public void setCourseaction(courseAction courseaction) {
+        this.courseaction = courseaction;
+    }
 }
