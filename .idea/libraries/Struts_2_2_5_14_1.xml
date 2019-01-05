@@ -10,6 +10,7 @@
       <root url="jar://C:/Softwares/struts-2.5.18-min-lib/struts-2.5.18/lib/log4j-api-2.10.0.jar!/" />
       <root url="jar://C:/Softwares/struts-2.5.18-min-lib/struts-2.5.18/lib/ognl-3.1.15.jar!/" />
       <root url="jar://C:/Softwares/struts-2.5.18-min-lib/struts-2.5.18/lib/struts2-core-2.5.18.jar!/" />
+      <root url="jar://C:/Softwares/struts-2.5.18/lib/struts2-json-plugin-2.5.18.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

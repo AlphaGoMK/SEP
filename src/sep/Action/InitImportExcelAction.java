@@ -11,7 +11,6 @@ public class InitImportExcelAction extends ActionSupport {
     private String excelfilename;
     private adminAction op=new adminAction();
 
-
     public String getExcelfilename() {
         return excelfilename;
     }
