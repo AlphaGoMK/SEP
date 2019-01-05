@@ -19,6 +19,7 @@
                 <result name="student">/StudentMain.jsp</result>
                 <result name="admin">/AdminMain.jsp</result>
                 <result name="error">/Error.jsp</result>
+                <result name="input">/Login.jsp</result>
                 <result name="success">/AdminMain.jsp</result>
             </action>
 
@@ -41,11 +42,43 @@
                 <result name="success">/StuGroupAndHomework.jsp</result>
             </action>
 
-            <action name="importT"
+            <action name="initTeacher"
                     class="sep.Action.InitImportExcelAction"
+                    method="importTeacher">
+
+            </action>
+
+            <action name="initStudent"
+                    class="sep.Action.InitImportExcelAction"
+                    method="importStudent">
+
+            </action>
+
+            <action name="FindUser"
+                    class="sep.Action.FindUserAction"
                     method="execute">
-                <result name="success">/TeacherMain.jsp</result>
-                <result name="error">/Error.jsp</result>
+                <result name="success">/UserResult.jsp</result>
+            </action>
+
+            <action name="EditUser"
+                    class="sep.Action.FindUserAction"
+                    method="edit">
+                <result name="success">/AdminMain.jsp</result>
+                <result name="error">/UserResult.jsp</result>
+            </action>
+
+            <action name="RemoveUser"
+                    class="sep.Action.FindUserAction"
+                    method="remove">
+                <result name="success">/AdminMain.jsp</result>
+                <result name="error">/UserResult.jsp</result>
+            </action>
+
+            <action name="AddUser"
+                    class="sep.Action.FindUserAction"
+                    method="add">
+                <result name="success">/UserResult.jsp</result>
+                <result name="error">/AddUser.jsp</result>
             </action>
 
             <action name="submitHomework"
@@ -58,11 +91,32 @@
             <action name="createGroup"
                     class="sep.Action.CreateGroupAction"
                     method="execute">
-                <result name="success">/createGroup.jsp</result>
+                <result name="success">/StuGroupAndHomework.jsp</result>
+                <result name="error">/StuGroupAndHomework.jsp</result>
+                <result name="input">/StuGroupAndHomework.jsp</result>
+            </action>
+
+        </package>
+
+        <package name="stajax" extends="json-default">
+            <action name="getSearchSuggest"
+                    class="sep.Action.AjaxGetSearchSuggestAction"
+                    method="execute">
+                <result name="success" type="json">
+                    <param name="root">nameList</param>
+                </result>
+                <result name="input"/>
+            </action>
+
+            <action name="fetchName"
+                    class="sep.Action.AjaxFetchNameAction"
+                    method="execute">
+                <result name="success" type="json">
+                    <param name="root">name</param>
+                </result>
+                <result name="input"/>
                 <!--错误处理-->
             </action>
         </package>
-
-
 
 </struts>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: AlphaGoMK
@@ -8,46 +9,81 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>学生作业管理系统</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style type="text/css">
+            .inputfile {
+                width: 0.1px;
+                height: 0.1px;
+                opacity: 0;
+                overflow: hidden;
+                position: absolute;
+                z-index: -1;
+            }
+            .inputfile + label {
+                font-size: 1em;
+                font-weight: 500;
+                color: black;
+                background-color: transparent;
+                display: inline-block;
+            }
+            .inputfile:focus + label,
+            .inputfile + label:hover {
+                background-color: transparent;
+                color: #005cbf;
+            }
+            #createGroupDiv {
+                display: none;
+            }
+
+            #groupAndHomeDiv {
+                display: block;
+            }
+
+            .nameSuggestList {
+                display: none;
+            }
+
+            .nameSuggestList li{
+                height:24px;
+                overflow:hidden;
+                line-height:24px;
+                background:#FFFFFF;
+                cursor:default;
+            }
+            .nameSuggestList li.hover{
+                background:#DDDDDD;
+            }
+        </style>
+        <link href="./bootstrap-4.0.0-dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="./bootstrap-4.0.0-dist/js/jquery-3.3.1.min.js"></script>
+    </head>
 </head>
 <body>
-    <h1>Login</h1>
-    <form action="login">
-        <label>Please input your account</label>
-        <input type="text" name="uid"/>
-        <input type="password" name="passwd"/>
-        <input type="submit" value="login"/>
-    </form>
 
-    <%--<form method=post action="login">--%>
-        <%--<label>Log in</label>--%>
-        <%--<br/>--%>
-        <%--<input type="button" name="ACT0" value="Admin" onclick="issue()"/>--%>
-        <%--<br/>--%>
-        <%--<input type="button" name="ACT1" value="Stu" onclick="check()"/>--%>
-        <%--<br/>--%>
-        <%--<input type="button" name="ACT2" value="Tea" onclick="score()"/>--%>
-    <%--</form>--%>
+<div class="row">
+    <div class="col-md-4">
+        <br/>
+    </div>
+    <div class="col-md-4">
+        <h1 class="display-3" align="center">登录</h1>
+        <form action="login">
+            <label for="uid">用户名</label>
+            <input class='form-control' type="text" name="uid" id="uid"/>
+            <label for="passwd">密码</label>
+            <input class='form-control' type="password" name="passwd" id="passwd"/>
+            <%--<input class='form-control' type="submit" value="login"/>--%>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <s:fielderror style="color: red"/>
+    </div>
+    <div class="col-md-4">
+        <br/>
+    </div>
+</div>
 
 </body>
 </html>
-
-<%--<%@ page language="java" contentType="text/html; charset=ISO-8859-1"--%>
-         <%--pageEncoding="ISO-8859-1"%>--%>
-<%--<%@ taglib prefix="s" uri="/struts-tags"%>--%>
-<%--<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"--%>
-<%--"http://www.w3.org/TR/html4/loose.dtd">--%>
-<%--<html>--%>
-<%--<head>--%>
-    <%--<title>Hello World</title>--%>
-<%--</head>--%>
-
-<%--<body>--%>
-<%--<h1>Hello World From Struts2</h1>--%>
-<%--<form action="hello">--%>
-    <%--<label for="name">Please enter your name</label><br/>--%>
-    <%--<input type="text" name="name"/>--%>
-    <%--<input type="submit" value="Say Hello"/>--%>
-<%--</form>--%>
-<%--</body>--%>
-<%--</html>--%>
