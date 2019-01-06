@@ -7,16 +7,7 @@
           <element id="module-output" name="SEP" />
         </element>
         <element id="directory" name="lib">
-<<<<<<< HEAD
           <element id="library" level="project" name="antlr-2.7.7" />
-=======
-          <element id="library" level="project" name="Struts 2-2.5.14.1" />
-          <element id="library" level="project" name="Hibernate 5.3.7-5.3.7" />
-          <element id="library" level="project" name="Spring-4.3.18.RELEASE" />
-          <element id="library" level="project" name="mysql-connector-java-8.0.13" />
-          <element id="library" level="project" name="poi" />
-          <element id="library" level="project" name="Java EE 6-Java EE 6" />
->>>>>>> 9578e81dda81e0abe7284c6a49a0b7bc56245938
         </element>
       </element>
       <element id="javaee-facet-resources" facet="SEP/web/Web" />

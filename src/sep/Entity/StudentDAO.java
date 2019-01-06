@@ -1,15 +1,10 @@
 package sep.Entity;
 
 
-import javafx.util.Pair;
 import org.hibernate.HibernateException;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class StudentDAO {
@@ -56,24 +51,6 @@ public class StudentDAO {
             tx = sess.beginTransaction();
             Student student = new Student(name, classid);
             Integer stuId = (Integer)sess.save(student); // Auto create id
-            student.setStuId(stuId);
-            tx.commit();
-            return student;
-        } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
-            return null;
-        } finally {
-            sess.close();
-        }
-    }
-
-    public static Student addStudentAndId(Integer stuId, String name, String classid){
-        Session sess = HibernateInit.getSession();
-        Transaction tx = null;
-        try {
-            tx = sess.beginTransaction();
-            Student student = new Student(stuId, name, classid);
             student.setStuId(stuId);
             tx.commit();
             return student;
@@ -161,25 +138,5 @@ public class StudentDAO {
             sess.close();
         }
     }
-
-    public static List<String> getNameSuggest(String name, Integer courseId) {
-        Session sess = HibernateInit.getSession();
-        Transaction tx = null;
-        try {
-            //TODO:
-            String sql = String.format("SELECT DISTINCT s.stuName FROM student s WHERE s.stuName like \"%s%%\"" +
-                     "AND s.stuId NOT IN (SELECT stuId FROM student_groupmap sg WHERE sg.courseId = %s)", name, courseId.toString());
-            SQLQuery query = sess.createSQLQuery(sql);
-            List<String> nameList = query.list();
-            return nameList;
-        } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
-            return null;
-        } finally {
-            sess.close();
-        }
-    }
-
 }
 

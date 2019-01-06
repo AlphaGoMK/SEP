@@ -32,17 +32,13 @@ public class LoginAction extends ActionSupport {
         // admin check
         ActionContext actionContext = ActionContext.getContext();
         Map session = actionContext.getSession();
-        if(uid.equals("") || passwd.equals("")) {
-            addFieldError("filedError", "用户名或密码为空");
-            return "input";
-        }
+
         if (uid.equals(new String("admin"))) {
             if (passwd.equals(new String("admin"))) {
                 session.put("USER_TYPE", "admin");
                 return "admin";
             } else {
-                addFieldError("filedError", "用户名或密码错误");
-                return "input";
+                return "error";
             }
         }
 
@@ -70,8 +66,7 @@ public class LoginAction extends ActionSupport {
             session.put("USER_TYPE", "student");
             return "student";
         }
-        addFieldError("filedError", "用户名或密码错误");
-        return "input";
+        return "error";
     }
 
     public String getUid() {

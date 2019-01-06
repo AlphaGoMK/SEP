@@ -19,7 +19,6 @@
                 <result name="student">/StudentMain.jsp</result>
                 <result name="admin">/AdminMain.jsp</result>
                 <result name="error">/Error.jsp</result>
-                <result name="input">/Login.jsp</result>
                 <result name="success">/AdminMain.jsp</result>
             </action>
 
@@ -91,11 +90,9 @@
             <action name="createGroup"
                     class="sep.Action.CreateGroupAction"
                     method="execute">
-                <result name="success">/StuGroupAndHomework.jsp</result>
-                <result name="error">/StuGroupAndHomework.jsp</result>
-                <result name="input">/StuGroupAndHomework.jsp</result>
+                <result name="success">/createGroup.jsp</result>
+                <!--错误处理-->
             </action>
-<<<<<<< HEAD
 
             <action name="flushC"
                     class="sep.Action.TSetCourseAction"
@@ -122,30 +119,6 @@
 
             <!--</action>-->
         </package>
-=======
 
-        </package>
-
-        <package name="stajax" extends="json-default">
-            <action name="getSearchSuggest"
-                    class="sep.Action.AjaxGetSearchSuggestAction"
-                    method="execute">
-                <result name="success" type="json">
-                    <param name="root">nameList</param>
-                </result>
-                <result name="input"/>
-            </action>
->>>>>>> 9578e81dda81e0abe7284c6a49a0b7bc56245938
-
-            <action name="fetchName"
-                    class="sep.Action.AjaxFetchNameAction"
-                    method="execute">
-                <result name="success" type="json">
-                    <param name="root">name</param>
-                </result>
-                <result name="input"/>
-                <!--错误处理-->
-            </action>
-        </package>
 
 </struts>

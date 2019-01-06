@@ -26,13 +26,6 @@ public class Student {
         this.password = "123456";
     }
 
-    public Student(Integer stuId, String name, String classid){
-        this.stuId = stuId;
-        this.name = name;
-        this.classid = classid;
-        this.password = "123456";
-    }
-
     public int getStuId(){
         return stuId;
     }
