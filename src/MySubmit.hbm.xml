@@ -15,7 +15,7 @@
         <property name="grpId" column="grpID" type="int"/>
         <property name="homeworkname" column="hwname" type="string"/>
         <property name="date" column="date" type="date"/>
-        <list name="pathList" cascade="all">
+        <list name="pathList" cascade="all" lazy="false">
             <key column="Id"/>
             <list-index column="Idx"/>
             <element column="path" type="string"/>
