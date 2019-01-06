@@ -87,12 +87,12 @@
                 <!--错误处理-->
             </action>
 
-            <action name="createGroup"
-                    class="sep.Action.CreateGroupAction"
-                    method="execute">
-                <result name="success">/createGroup.jsp</result>
-                <!--错误处理-->
-            </action>
+            <!--<action name="createGroup"-->
+                    <!--class="sep.Action.CreateGroupAction"-->
+                    <!--method="execute">-->
+                <!--<result name="success">/createGroup.jsp</result>-->
+                <!--&lt;!&ndash;错误处理&ndash;&gt;-->
+            <!--</action>-->
 
             <action name="flushC"
                     class="sep.Action.TSetCourseAction"
