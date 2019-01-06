@@ -19,6 +19,7 @@
                 <result name="student">/StudentMain.jsp</result>
                 <result name="admin">/AdminMain.jsp</result>
                 <result name="error">/Error.jsp</result>
+                <result name="input">/Login.jsp</result>
                 <result name="success">/AdminMain.jsp</result>
             </action>
 
@@ -87,20 +88,20 @@
                 <!--错误处理-->
             </action>
 
-            <!--<action name="createGroup"-->
-                    <!--class="sep.Action.CreateGroupAction"-->
-                    <!--method="execute">-->
-                <!--<result name="success">/createGroup.jsp</result>-->
-                <!--&lt;!&ndash;错误处理&ndash;&gt;-->
-            <!--</action>-->
-
-            <action name="flushC"
+            <action name="createGroup"
+                    class="sep.Action.CreateGroupAction"
+                    method="execute">
+                <result name="success">/StuGroupAndHomework.jsp</result>
+                <result name="error">/StuGroupAndHomework.jsp</result>
+                <result name="input">/StuGroupAndHomework.jsp</result>
+		
+            </action>
+	    <action name="flushC"
                     class="sep.Action.TSetCourseAction"
                     method="flushCourse">
                 <result name="success">/TeacherMain.jsp</result>
             </action>
-
-            <action name="teacherviewgrp"
+	    <action name="teacherviewgrp"
                     class="sep.Action.TViewGroupAction"
                     method="execute">
                 <result name="success">/TViewGrp.jsp</result>
@@ -112,13 +113,33 @@
                 <result name="success">/TeacherLoad.jsp</result>
                 <result name="error">/Error.jsp</result>
             </action>
-
-            <!--<action name="TflushCourse"-->
-                    <!--class="sep.Action.TSetCourseAction"-->
-                    <!--method="flushCourse">-->
-
-            <!--</action>-->
+            <action name="TeacherCreateHomework"
+                    class="sep.Action.TSetCourseAction"
+                    method="createHomework">
+                <result name="success">/TViewGrp.jsp</result>
+            </action>
+            
         </package>
 
+        <package name="stajax" extends="json-default">
+            <action name="getSearchSuggest"
+                    class="sep.Action.AjaxGetSearchSuggestAction"
+                    method="execute">
+                <result name="success" type="json">
+                    <param name="root">nameList</param>
+                </result>
+                <result name="input"/>
+            </action>
+
+            <action name="fetchName"
+                    class="sep.Action.AjaxFetchNameAction"
+                    method="execute">
+                <result name="success" type="json">
+                    <param name="root">name</param>
+                </result>
+                <result name="input"/>
+                <!--错误处理-->
+            </action>
+        </package>
 
 </struts>

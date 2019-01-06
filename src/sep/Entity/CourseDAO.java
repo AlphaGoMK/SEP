@@ -51,9 +51,6 @@ public class CourseDAO {
             Course course = new Course(name, description, teacherid, maxcrew, mincrew);
             Integer courseId = (Integer)sess.save(course); // Auto create id
             course.setCourseId(courseId);
-            System.out.println("courseDAO");
-            System.out.println(course.getName());
-            System.out.println(teacherid);
             TeacherDAO.addCourse(teacherid, courseId);
             tx.commit();
             return course;
@@ -131,7 +128,5 @@ public class CourseDAO {
             sess.close();
         }
     }
-
-
 }
 
