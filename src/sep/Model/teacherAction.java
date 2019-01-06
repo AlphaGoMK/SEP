@@ -86,8 +86,8 @@ public class teacherAction {
 
     private courseAction courseaction=new courseAction();
 
-    public void setCourse(int name, int id, String desc, int teacherId){
-        courseaction.setCourse(name, id, desc, teacherId);
+    public void createCourse(String name, String desc, int teacherId, int maxcrew, int mincrew){
+        courseaction.createCourse(name, desc, teacherId, maxcrew, mincrew);
     }
 
     public void setStuList(int courseId, String path){

@@ -15,7 +15,17 @@ public class LoginAction extends ActionSupport {
     private String userName;
 
     public String execute() throws Exception{
+        //return teacherCheck();
         return check();
+    }
+
+    public String teacherCheck() throws Exception{
+        ActionContext actionContext = ActionContext.getContext();
+        Map session = actionContext.getSession();
+        session.put("USER_NAME", "TEST");
+        session.put("USER_ID", "123456");
+        session.put("USER_TYPE", "teacher");
+        return "teacher";
     }
 
     public String check() throws Exception{

@@ -15,7 +15,7 @@
             <action name="login"
                     class="sep.Action.LoginAction"
                     method="execute">
-                <result name="teacher">/TeacherMain.jsp</result>
+                <result name="teacher">/TeacherLoad.jsp</result>
                 <result name="student">/StudentMain.jsp</result>
                 <result name="admin">/AdminMain.jsp</result>
                 <result name="error">/Error.jsp</result>
@@ -41,11 +41,43 @@
                 <result name="success">/StuGroupAndHomework.jsp</result>
             </action>
 
-            <action name="importT"
+            <action name="initTeacher"
                     class="sep.Action.InitImportExcelAction"
+                    method="importTeacher">
+
+            </action>
+
+            <action name="initStudent"
+                    class="sep.Action.InitImportExcelAction"
+                    method="importStudent">
+
+            </action>
+
+            <action name="FindUser"
+                    class="sep.Action.FindUserAction"
                     method="execute">
-                <result name="success">/TeacherMain.jsp</result>
-                <result name="error">/Error.jsp</result>
+                <result name="success">/UserResult.jsp</result>
+            </action>
+
+            <action name="EditUser"
+                    class="sep.Action.FindUserAction"
+                    method="edit">
+                <result name="success">/AdminMain.jsp</result>
+                <result name="error">/UserResult.jsp</result>
+            </action>
+
+            <action name="RemoveUser"
+                    class="sep.Action.FindUserAction"
+                    method="remove">
+                <result name="success">/AdminMain.jsp</result>
+                <result name="error">/UserResult.jsp</result>
+            </action>
+
+            <action name="AddUser"
+                    class="sep.Action.FindUserAction"
+                    method="add">
+                <result name="success">/UserResult.jsp</result>
+                <result name="error">/AddUser.jsp</result>
             </action>
 
             <action name="submitHomework"
@@ -61,8 +93,32 @@
                 <result name="success">/createGroup.jsp</result>
                 <!--错误处理-->
             </action>
-        </package>
 
+            <action name="flushC"
+                    class="sep.Action.TSetCourseAction"
+                    method="flushCourse">
+                <result name="success">/TeacherMain.jsp</result>
+            </action>
+
+            <action name="teacherviewgrp"
+                    class="sep.Action.TViewGroupAction"
+                    method="execute">
+                <result name="success">/TViewGrp.jsp</result>
+            </action>
+
+            <action name="TeacherCreateCourse"
+                    class="sep.Action.TSetCourseAction"
+                    method="createCourse">
+                <result name="success">/TeacherLoad.jsp</result>
+                <result name="error">/Error.jsp</result>
+            </action>
+
+            <!--<action name="TflushCourse"-->
+                    <!--class="sep.Action.TSetCourseAction"-->
+                    <!--method="flushCourse">-->
+
+            <!--</action>-->
+        </package>
 
 
 </struts>
