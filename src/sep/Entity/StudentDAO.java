@@ -181,5 +181,24 @@ public class StudentDAO {
         }
     }
 
+    public static List<Student> getStudentByCourseId(Integer courseId) {
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try {
+            tx = sess.beginTransaction();
+            String hql = "FROM Student s WHERE " + courseId.toString() + " in elements(s.courseset)";
+            Query query = sess.createQuery(hql);
+            List<Student> stuLists = query.list();
+            tx.commit();
+            return stuLists;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return null;
+        } finally {
+            sess.close();
+        }
+    }
+
 }
 

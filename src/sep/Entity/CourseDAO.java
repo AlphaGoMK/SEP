@@ -110,5 +110,23 @@ public class CourseDAO {
         }
     }
 
+    public static boolean addGroup(Integer courseId, Integer grpId) {
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try {
+            tx = sess.beginTransaction();
+            Course course = (Course)sess.get(Course.class, courseId);
+            course.addGrp(GroupDAO.getGroupById(grpId));
+            sess.update(course);
+            tx.commit();
+            return true;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
+            sess.close();
+        }
+    }
 }
 

@@ -18,6 +18,7 @@ public class GroupDAO {
             Group g = new Group(groupId, courseID, leaderId, contact);
             Integer grpId = (Integer)sess.save(g); // Auto create id
             StudentDAO.joinGroup(leaderId, g.getCourseID(), g.getId());
+            CourseDAO.addGroup(courseID, g.getId());
             g.setId(grpId);
             tx.commit();
             return g;
@@ -53,8 +54,8 @@ public class GroupDAO {
         Transaction tx = null;
         try {
             tx = sess.beginTransaction();
-            Query query = sess.createQuery("FROM Group WHERE Group.courseID = ? ");
-            query.setString(0, courseId.toString());
+            String q = "SELECT g FROM Group g WHERE g.courseID=" + courseId.toString();
+            Query query = sess.createQuery(q);
             List<Group> grpList = query.list();
             tx.commit();
             return grpList;
@@ -66,6 +67,7 @@ public class GroupDAO {
             sess.close();
         }
     }
+
     public static Group getGroupById(Integer grpId) {
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
