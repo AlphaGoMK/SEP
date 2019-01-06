@@ -23,9 +23,12 @@
 hs_err_pid*
 .idea/*
 
+workspace.xml
+
+
 # ingore out/
 out/
-lib/
+
 
 SEP.iml
 
