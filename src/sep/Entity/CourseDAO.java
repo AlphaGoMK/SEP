@@ -51,6 +51,9 @@ public class CourseDAO {
             Course course = new Course(name, description, teacherid, maxcrew, mincrew);
             Integer courseId = (Integer)sess.save(course); // Auto create id
             course.setCourseId(courseId);
+            System.out.println("courseDAO");
+            System.out.println(course.getName());
+            System.out.println(teacherid);
             TeacherDAO.addCourse(teacherid, courseId);
             tx.commit();
             return course;
@@ -109,6 +112,26 @@ public class CourseDAO {
             sess.close();
         }
     }
+
+    public static boolean addGroup(Integer courseId, Integer grpId) {
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try {
+            tx = sess.beginTransaction();
+            Course course = (Course)sess.get(Course.class, courseId);
+            course.addGrp(GroupDAO.getGroupById(grpId));
+            sess.update(course);
+            tx.commit();
+            return true;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
+            sess.close();
+        }
+    }
+
 
 }
 

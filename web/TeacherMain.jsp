@@ -37,7 +37,10 @@
             </br>
             <ul class="nav flex-column nav-pills">
                 <li class="nav-item" >
-                    <a class="nav-link " href="javascript:void(0)" onclick="showCourse()">课程信息</a>
+
+                    <a class="nav-link " href="javascript:void(0);" onclick="showCourse();">
+                        课程信息
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="javascript:void(0);" onclick="createCourse()">
@@ -46,9 +49,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="javascript:void(0)" onclick="setHome()" id="setHomeBtn">设置作业</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="javascript:void(0)" id="setGrpBtn">设置小组配置</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="javascript:void(0)" id="setStuBtn">设置学生名单</a>
@@ -78,18 +78,21 @@
                 <tbody>
                 <tr class="row">
                     <s:iterator value="courseList" var="CourseInfo">
-                        <td class="col-1">
-                            <a href="/sep/Action/TStuGrpHome.action?courseId=<s:property value="courseId"/>">
+                        <td class="col-2">
+                            <a href="/sep/Action/teacherviewgrp.action?courseId=<s:property value="courseId"/>&teacherId=<s:property value="#session.USER_ID"/>">
                                 <s:property value="courseId"/>
                             </a>
+
                         </td>
-                        <td class="col-1">
-                            <a href="/sep/Action/TStuGrpHome.action?courseId=<s:property value="courseId"/>">
+                        <td class="col-2">
+                            <a href="/sep/Action/teacherviewgrp.action?courseId=<s:property value="courseId"/>">
                                 <s:property value="name"/>
                             </a>
                         </td>
                         <td class="col-8">
-                            <s:property value="description"/>
+                            <a href="/sep/Action/teacherviewgrp.action?courseId=<s:property value="courseId"/>">
+                                <s:property value="description"/>
+                            </a>
                         </td>
 
                     </s:iterator>
@@ -102,17 +105,35 @@
             </br>
             </br>
 
-            <form class="form-horizontal" role="form" action="TSetCourse">
+            <form class="form-horizontal" role="form" action="TeacherCreateCourse">
                 <div class="form-group">
                     <label for="firstname" class="col-sm-2 control-label">课程名</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="firstname" placeholder="课程的名字">
+                        <input type="text" class="form-control" name="courseName" id="firstname" placeholder="课程的名字">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="lastname" class="col-sm-2 control-label">课程描述</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="lastname" placeholder="描述课程">
+                        <input type="text" class="form-control" name="description" id="lastname" placeholder="描述课程">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="maxcrew" class="col-sm-2 control-label">最大组员数</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="maxcrew" id="maxcrew" placeholder="最多几人同组">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mincrew" class="col-sm-2 control-label">最小组员数</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="mincrew" id="mincrew" placeholder="最少几人同组">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="prefix" class="col-sm-2 control-label">组名前缀</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="prefix" id="prefix" >
                     </div>
                 </div>
                 <div class="form-group">
@@ -200,10 +221,11 @@
         document.getElementById('showCourseDiv').style.display = "none";
         document.getElementById('setHomeDiv').style.display = "none";
         document.getElementById('setHomeBtn').setAttribute("class","nav-link");
-        document.getElementById('setGrpBtn').setAttribute("class","nav-link");
         document.getElementById('setStuBtn').setAttribute("class","nav-link");
         document.getElementById('checkHomeBtn').setAttribute("class","nav-link");
         document.getElementById('showList').setAttribute("class","nav-link");
+
+        flushCourseFn();
     }
 
     function showCourse() {
@@ -211,6 +233,12 @@
         showCourseDiv.style.display = "block";
         document.getElementById('createCourseDiv').style.display = "none";
         document.getElementById('setHomeDiv').style.display = "none";
+    }
+
+    function flushCourseFn()
+    {
+
+
     }
 
     function setHome(){

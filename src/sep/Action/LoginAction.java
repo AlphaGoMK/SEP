@@ -15,8 +15,8 @@ public class LoginAction extends ActionSupport {
     private String userName;
 
     public String execute() throws Exception{
-        return teacherCheck();
-        //return check();
+        //return teacherCheck();
+        return check();
     }
 
     public String teacherCheck() throws Exception{
