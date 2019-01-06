@@ -79,6 +79,7 @@ public class TViewGroupAction extends ActionSupport {
         ActionContext actionContext = ActionContext.getContext();
         Map session = actionContext.getSession();
         session.put("COURSE_ID", courseId);
+        session.put("SELECTED", 1);
         grpList=new ArrayList<GroupInfo>();
         System.out.println("success");
         List<Group> gp= GroupDAO.getGroupListByCourseId(courseId);

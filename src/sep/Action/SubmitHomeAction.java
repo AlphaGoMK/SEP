@@ -20,28 +20,25 @@ public class SubmitHomeAction extends ActionSupport {
     public String execute()
     {
         /* Copy file to a safe location */
-        this.destPath = "C:/Workspace/Courses/Software Engineering/SEP/hw";
+        this.destPath = "C:/Workspace/Courses/Software Engineering/SEP/hw/";
         try{
-            System.out.println("Submitted File name: " + "/" + hwFile);
-            this.destPath += hwFileFileName;
+            System.out.println(this.destPath + hwFileFileName);
             File destFile  = new File(destPath, hwFileFileName);
             FileUtils.copyFile(hwFile, destFile);
 
             ActionContext actionContext = ActionContext.getContext();
             Map session = actionContext.getSession();
 
-            if (GroupDAO.submitHome((Integer)session.get("GROUP_ID"), hwName, destPath)) {
+            if (GroupDAO.submitHome((Integer)session.get("GROUP_ID"), hwName, destPath + hwFileFileName)) {
                 System.out.println("Submit success!");
                 return "success";
             } else {
                 return "error";
             }
-
         }catch(IOException e){
             e.printStackTrace();
             return "error";
         }
-
     }
 
     public File getHwFile() {

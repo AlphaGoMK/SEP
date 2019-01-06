@@ -17,6 +17,7 @@ public class ShowGroupAndHomeAction extends ActionSupport {
     private Group g;
     private List<String> hwState;
     private List<Double> hwScore;
+    private List<List<String>> hwFileLists;
 
     public Group getG() {
         return g;
@@ -76,6 +77,13 @@ public class ShowGroupAndHomeAction extends ActionSupport {
         this.hwScore = hwScore;
     }
 
+    public List<List<String>> getHwFileLists() {
+        return hwFileLists;
+    }
+    public void setHwFileLists(List<List<String>> hwFileLists) {
+        this.hwFileLists = hwFileLists;
+    }
+
     public String execute() {
         System.out.println("ShowGroupAndHomeAction called.");
         ActionContext actionContext = ActionContext.getContext();
@@ -92,9 +100,10 @@ public class ShowGroupAndHomeAction extends ActionSupport {
             g = GroupDAO.getGroupById(grpId);
             hwState = new ArrayList<String>();
             hwScore = new ArrayList<Double>();
-
+            hwFileLists = new ArrayList<List<String>>();
             Map<String, MySubmit> submitted = g.getSubmit();
             Map<String, Double> submitScore = g.getScore();
+            int i = 0;
             for (Iterator<Homework> it = c.getHomework().iterator(); it.hasNext();) {
                 Homework h = (Homework)it.next();
                 if (submitted.containsKey(h.getName())) {
@@ -104,10 +113,21 @@ public class ShowGroupAndHomeAction extends ActionSupport {
                     } else {
                         hwScore.add(-1.0);
                     }
-
+                    List<String> rawList = submitted.get(h.getName()).getPathList();
+                    if (rawList.size() > 0) {
+                        List<String> trimed = new ArrayList<>();
+                        for (int j = 0; j < rawList.size(); j++) {
+                            String[] splitted = rawList.get(j).split("\\/");
+                            trimed.add(splitted[splitted.length - 1]);
+                        }
+                        hwFileLists.add(trimed);
+                    } else {
+                        hwFileLists.add(new ArrayList<>());
+                    }
                 } else {
                     hwState.add("false");
                     hwScore.add(-1.0);
+                    hwFileLists.add(new ArrayList<>());
                 }
             }
             session.put("GROUP_ID", this.g.getId());
@@ -115,7 +135,9 @@ public class ShowGroupAndHomeAction extends ActionSupport {
             has_group = "false";
             g = null;
         }
-
+        System.out.println("hwFileLists");
+        System.out.println(hwFileLists);
+        System.out.println("end");
         this.courseInfo = new CourseInfo(CourseDAO.getCoursebyId(courseId));
         return "success";
     }

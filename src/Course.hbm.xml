@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-        "-//Hibernate/Hibernate Mapping DTD//EN"
-        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        <!DOCTYPE hibernate-mapping PUBLIC
+                "-//Hibernate/Hibernate Mapping DTD//EN"
+                "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="sep.Entity.Course" table="Course">
-        <meta attribute="class-description">
-            This class contains the course detail.
-        </meta>
-        <id name="courseId" type="int" column="courseId">
-            <generator class="native"/>
-        </id>
-        <property name="name" column="courseName" type="string"/>
-        <property name="date" column="regDate" type="date"/>
-        <property name="description" column="courseDesc" type="string"/>
-        <property name="teacherid" column="teacherId" type="int"/>
-        <property name="maxcrew" column="maxcrew" type="int"/>
-        <property name="mincrew" column="mincrew" type="int"/>
-        <property name="grpPrefix" column="grpPrefix" type="string"/>
-        <list name="homework" cascade="all" lazy="false">
-            <key column="courseId"/>
-            <list-index column="idx"/>
-            <one-to-many class="sep.Entity.Homework"/>
-        </list>
-        <set name="grp" cascade="all" lazy="false">
-            <key column="courseId"/>
-            <one-to-many class="sep.Entity.Group"/>
-        </set>
-    </class>
+<class name="sep.Entity.Course" table="Course">
+    <meta attribute="class-description">
+        This class contains the course detail.
+    </meta>
+    <id name="courseId" type="int" column="courseId">
+        <generator class="native"/>
+    </id>
+    <property name="name" column="courseName" type="string"/>
+    <property name="date" column="regDate" type="date"/>
+    <property name="description" column="courseDesc" type="string"/>
+    <property name="teacherid" column="teacherId" type="int"/>
+    <property name="maxcrew" column="maxcrew" type="int"/>
+    <property name="mincrew" column="mincrew" type="int"/>
+    <property name="grpPrefix" column="grpPrefix" type="string"/>
+    <list name="homework" cascade="all" lazy="false">
+        <key column="courseId"/>
+        <list-index column="idx"/>
+        <one-to-many class="sep.Entity.Homework"/>
+    </list>
+    <set name="grp" cascade="all" lazy="false">
+        <key column="courseId"/>
+        <one-to-many class="sep.Entity.Group"/>
+    </set>
+</class>
 </hibernate-mapping>

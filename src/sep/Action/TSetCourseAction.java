@@ -19,6 +19,10 @@ public class TSetCourseAction extends ActionSupport {
     private String description;
     private int maxcrew;
     private int mincrew;
+    private String homeworkName;
+    private String homeworkDesc;
+    private Date submitDDL;
+    private double percentage;
     private String maxcrewtxt;
     private String mincrewtxt;
     private courseAction ca=new courseAction();
@@ -131,9 +135,24 @@ public class TSetCourseAction extends ActionSupport {
 //                return "error";
 //            }
             ca.createCourse(courseName, description, teacherId, maxcrew, mincrew);
+            session.put("SELECTED", false);
             return "success";
         }
 
+    }
+
+    public String createHomework() throws Exception{
+        ActionContext actionContext = ActionContext.getContext();
+        Map session = actionContext.getSession();
+        courseId=(int)session.get("COURSE_ID");
+        System.out.println("Submit date: ");
+        System.out.println(submitDDL);
+        System.out.println(percentage);
+
+        ca.getCourseById(courseId).addHome(homeworkName, homeworkDesc, submitDDL, percentage);
+
+
+        return "success";
     }
 
     public courseAction getCa() {
@@ -190,5 +209,37 @@ public class TSetCourseAction extends ActionSupport {
 
     public void setMincrewtxt(String mincrewtxt) {
         this.mincrewtxt = mincrewtxt;
+    }
+
+    public String getHomeworkName() {
+        return homeworkName;
+    }
+
+    public void setHomeworkName(String homeworkName) {
+        this.homeworkName = homeworkName;
+    }
+
+    public String getHomeworkDesc() {
+        return homeworkDesc;
+    }
+
+    public void setHomeworkDesc(String homeworkDesc) {
+        this.homeworkDesc = homeworkDesc;
+    }
+
+    public Date getSubmitDDL() {
+        return submitDDL;
+    }
+
+    public void setSubmitDDL(Date submitDDL) {
+        this.submitDDL = submitDDL;
+    }
+
+    public double getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(double percentage) {
+        this.percentage = percentage;
     }
 }
