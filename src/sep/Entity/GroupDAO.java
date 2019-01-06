@@ -31,7 +31,6 @@ public class GroupDAO {
         }
     }
 
-
     public static boolean deleteGroup(int grpId) {
         Session sess = HibernateInit.getSession();
         Transaction tx = null;

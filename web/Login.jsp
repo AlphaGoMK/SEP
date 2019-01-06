@@ -124,7 +124,7 @@
             <label for="password">密码</label> <input type="password" id="password" name="passwd" placeholder="密码">
             <input type="submit" class="login loginmodal-submit" value="登入">
         </form>
-
+	<s:fielderror style="color: red"/>
     </div>
 
 </body>
