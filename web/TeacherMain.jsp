@@ -11,7 +11,6 @@
     <title>Teacher Menu</title>
 </head>
 <body>
-<<<<<<< HEAD
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-2">
@@ -235,15 +234,6 @@
     $('#ex1').slider({
         formatter: function(value) {
             return 'Current value: ' + value;
-=======
-
-    <script type="text/javascript">
-        function issue(){
-            window.location = "/Issue.jsp";
-        }
-        function check(){
-            window.location = "/Check.jsp";
->>>>>>> parent of 8f293e6... Commit
         }
         function score(){
             window.location.replace("/Score.jsp");

@@ -9,7 +9,6 @@
 <html>
 <head>
     <title>Title</title>
-<<<<<<< HEAD
     <style type="text/css">
         @import url(http://fonts.googleapis.com/css?family=Roboto);
 
@@ -108,13 +107,10 @@
             font-size: 12px;
         }
     </style>
-=======
->>>>>>> parent of 9578e81... Merge pull request #3 from Z-sz/master
 </head>
 
 
 <body>
-<<<<<<< HEAD
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -130,37 +126,14 @@
         </form>
 
     </div>
-=======
-    <h1>Login</h1>
-    <form action="login">
-        <label>Please input your account</label>
-        <input type="text" name="uid"/>
-        <input type="password" name="passwd"/>
-        <input type="submit" value="login"/>
-    </form>
-
-    <%--<form method=post action="login">--%>
-        <%--<label>Log in</label>--%>
-        <%--<br/>--%>
-        <%--<input type="button" name="ACT0" value="Admin" onclick="issue()"/>--%>
-        <%--<br/>--%>
-        <%--<input type="button" name="ACT1" value="Stu" onclick="check()"/>--%>
-        <%--<br/>--%>
-        <%--<input type="button" name="ACT2" value="Tea" onclick="score()"/>--%>
-    <%--</form>--%>
->>>>>>> parent of 9578e81... Merge pull request #3 from Z-sz/master
 
 </body>
 </html>
 
-<<<<<<< HEAD
 
 
 
 
-=======
-=======
->>>>>>> parent of 9578e81... Merge pull request #3 from Z-sz/master
 <%--<%@ page language="java" contentType="text/html; charset=ISO-8859-1"--%>
          <%--pageEncoding="ISO-8859-1"%>--%>
 <%--<%@ taglib prefix="s" uri="/struts-tags"%>--%>

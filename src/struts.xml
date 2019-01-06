@@ -87,7 +87,6 @@
                 <!--错误处理-->
             </action>
 
-<<<<<<< HEAD
             <!--<action name="createGroup"-->
                     <!--class="sep.Action.CreateGroupAction"-->
                     <!--method="execute">-->
@@ -120,17 +119,6 @@
 
             <!--</action>-->
         </package>
-=======
-            <action name="createGroup"
-                    class="sep.Action.CreateGroupAction"
-                    method="execute">
-                <result name="success">/createGroup.jsp</result>
-                <!--错误处理-->
-            </action>
-        </package>
-
-
->>>>>>> parent of 9578e81... Merge pull request #3 from Z-sz/master
 
 
 </struts>
