@@ -15,11 +15,16 @@ public class courseAction {
         return c.getGrpById(groupId);
     }
 
+<<<<<<< HEAD
     public void createCourse(String name, String desc, int teacherId, int maxcrew, int mincrew){
         System.out.println("name: "+name);
         System.out.println("maxcrew: "+Integer.toString(maxcrew));
         System.out.println(maxcrew);
         CourseDAO.addCourse(name, desc, teacherId, maxcrew, mincrew);
+=======
+    public static void setCourse(int name, int id, String desc, int teacherId){
+        // TODO DAO
+>>>>>>> parent of 8f293e6... Commit
     }
 
     public void setGrpCfg(int courseId, String prefix, int maxcrew, int mincrew){
@@ -27,5 +32,9 @@ public class courseAction {
         c.setGrpPrefix(prefix);
         c.setMaxcrew(maxcrew);
         c.setMincrew(mincrew);
+<<<<<<< HEAD
     }
+=======
+    } 
+>>>>>>> parent of 8f293e6... Commit
 }

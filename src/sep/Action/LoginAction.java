@@ -15,6 +15,7 @@ public class LoginAction extends ActionSupport {
     private String userName;
 
     public String execute() throws Exception{
+<<<<<<< HEAD
         //return teacherCheck();
         return check();
     }
@@ -26,6 +27,9 @@ public class LoginAction extends ActionSupport {
         session.put("USER_ID", "123456");
         session.put("USER_TYPE", "teacher");
         return "teacher";
+=======
+        return check();
+>>>>>>> parent of 8f293e6... Commit
     }
 
     public String check() throws Exception{
