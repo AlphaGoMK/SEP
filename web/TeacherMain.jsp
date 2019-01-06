@@ -6,10 +6,28 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<base href="<%=basePath%>">
 <html>
 <head>
-    <title>Teacher Menu</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="./bootstrap-4.0.0-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <%--datetimepicker--%>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
 </head>
+
 <body>
 <div class="container-fluid">
     <div class="row">
@@ -235,21 +253,9 @@
         formatter: function(value) {
             return 'Current value: ' + value;
         }
-        function score(){
-            window.location.replace("/Score.jsp");
-        }
-    </script>
+    });
 
-    <form method=post action="select">
-        <label>select</label>
-        <br/>
-        <input type="button" name="ACT0" value="ISSUE" onclick="issue()"/>
-        <br/>
-        <input type="button" name="ACT1" value="CHECK" onclick="check()"/>
-        <br/>
-        <input type="button" name="ACT2" value="SCORE" onclick="score()"/>
-    </form>
-
+</script>
 
 </body>
 </html>
