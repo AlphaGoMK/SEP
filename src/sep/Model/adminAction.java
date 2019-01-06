@@ -5,7 +5,9 @@ import com.sun.org.apache.xerces.internal.xs.StringList;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import sep.Entity.Student;
+import sep.Entity.StudentDAO;
 import sep.Entity.Teacher;
+import sep.Entity.TeacherDAO;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -78,24 +80,25 @@ public class adminAction {
     }
 
     public int getUserType(int uid){
-
-        // TODO: 1 for taecher, 2 for student
-
-        String s=Integer.toString(uid);
-        if(s.charAt(0)=='1'){
+        // 1 for teacher; 2 for student; 0 for neither
+        if(TeacherDAO.getTeacherbyId(uid)!=null){
             return 1;
         }
-        else return 2;
+        else if(StudentDAO.getStudentbyId(uid)!=null){
+            return 2;
+        }
+        else{
+            return 0;
+        }
     }
 
     public Teacher getTeacherById(int id){
-        // TODO: DAO
-        return null;
+
+        return TeacherDAO.getTeacherbyId(id);
     }
 
     public Student getStudentById(int id){
-        // TODO: DAO
-        return null;
+        return StudentDAO.getStudentbyId(id);
     }
 
     public void editUser(InitInfo i) throws Exception{
@@ -143,21 +146,31 @@ public class adminAction {
             Teacher t;
             try{
                 t=getTeacherById(i.getId());
+                if(t!=null){
+                    TeacherDAO.deleteTeacher(t.getTeacherId());
+                }
+                else{
+                    System.out.println("Can not find teacher");
+                }
 
-                // TODO: DAO
+
 
             }catch(Exception e){
-                System.out.println("Can not find teacher");
+                System.out.println("Delete error");
             }
         }
         else {
             Student s;
             try{
                 s=getStudentById(i.getId());
-
-                // TODO: DAO
+                if(s!=null){
+                    StudentDAO.deleteStudent(s.getStuId());
+                }
+                else{
+                    System.out.println("Can not find student");
+                }
             }catch(Exception e){
-                System.out.println("Can not find student");
+                System.out.println("Delete error");
             }
         }
     }

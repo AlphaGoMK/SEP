@@ -47,6 +47,7 @@ public class LoginAction extends ActionSupport {
             session.put("USER_NAME", t.getName());
             session.put("USER_ID", t.getTeacherId());
             session.put("USER_TYPE", "teacher");
+            session.put("SELECTED", 0);
             return "teacher";
         }
 
