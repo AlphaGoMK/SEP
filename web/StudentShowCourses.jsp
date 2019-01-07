@@ -46,7 +46,7 @@
         <div class="col-md-10">
             </br>
             </br>
-            <table class="table table-striped">
+            <table class="table table-striped" style="word-break:break-all; word-wrap:break-word;">
                 <thead>
                 <tr class="row">
                     <th class="col-1">课程编号</th>

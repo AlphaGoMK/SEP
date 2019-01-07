@@ -74,7 +74,7 @@ public class StudentDAO {
         try {
             tx = sess.beginTransaction();
             Student student = new Student(stuId, name, classid);
-            student.setStuId(stuId);
+            sess.save(student);
             tx.commit();
             return student;
         } catch (HibernateException e) {
@@ -152,6 +152,7 @@ public class StudentDAO {
         try {
             tx = sess.beginTransaction();
             Student stu = (Student)sess.get(Student.class, stuId);
+            tx.commit();
             return stu;
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();

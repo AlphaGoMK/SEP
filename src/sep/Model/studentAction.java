@@ -95,9 +95,9 @@ public class studentAction {
         // TODO: DAO
     }
 
-    public void submitHome(Integer grpId, int courseId, String hname, String path){
+    public void submitHome(Integer grpId, int courseId, String hname, String path, Integer stuId){
         Group tmp=courseaction.getGrpById(courseId,grpId);
-        tmp.addSubmit(hname, path); // current time
+        tmp.addSubmit(hname, path, stuId); // current time
     }
 
     public void setContrib(Integer grpId, int courseId, Map<Integer, Double> contrib_table){

@@ -13,6 +13,7 @@ public class Teacher {
     public Teacher(){}
     public Teacher(String teacherName){
         this.name=teacherName;
+        this.password="123456";
     }
 
     public int getTeacherId() {
