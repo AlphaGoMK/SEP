@@ -75,7 +75,7 @@
                 <tr class="row">
                     <s:iterator value="courseList" var="CourseInfo">
                         <td class="col-2">
-                            <a href="/sep/Action/teacherviewgrp.action?courseId=<s:property value="courseId"/>&teacherId=<s:property value="#session.USER_ID"/>">
+                            <a href="/sep/Action/teacherviewgrp.action?courseId=<s:property value="courseId"/>">
                                 <s:property value="courseId"/>
                             </a>
 
