@@ -9,7 +9,6 @@
             This class contains the student information.
         </meta>
         <id name="stuId" type="int" column="stuId">
-            <generator class="native"/>
         </id>
         <property name="name" column="stuName" type="string"/>
         <property name="score" column="score" type="double"/>

@@ -132,18 +132,18 @@
                 <result name="success">/TViewGrp.jsp</result>
             </action>
 
-            <action name="showStuList"
-                    class="sep.Action.ShowStuListAction"
-                    method="execute">
-                <result name="success">/ShowStuList.jsp</result>
-            </action>
 
             <action name="scorehomework"
                     class="sep.Action.TPigaiSubmitAction"
                     method="scoreSubmit">
-                <result name="success">/TRankSubmit.jsp</result>
+                <result name="success">/ShowSubmission.jsp</result>
             </action>
 
+            <action name="pigaisubmit"
+                    class="sep.Action.TPigaiSubmitAction"
+                    method="execute">
+                <result name="success">/TRankSubmit.jsp</result>
+            </action>
             <!--<action name="flushSubmit"-->
                     <!--class="sep.Action.TViewGroupAction"-->
                     <!--method="flushSubmitList">-->

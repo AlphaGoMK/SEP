@@ -103,29 +103,29 @@
                 <s:iterator value="submitList" var="sublist" status="status">
                     <tr class="row">
                         <th class="col-1">
-                            <a href="javascript:void(0)">
+                            <a href="/sep/Action/pigaisubmit.action?submitId=<s:property value="#sublist.id"/>">
                                 <s:property value="#sublist.homeworkname"/>
                             </a>
                         </th>
                         <th class="col-1">
-                            <a href="javascript:void(0)">
+                            <a href="/sep/Action/pigaisubmit.action?submitId=<s:property value="#sublist.id"/>">
                                 <s:property value="#sublist.date"/>
                             </a>
                         </th>
                         <th class="col-1">
-                            <a href="javascript:void(0)">
+                            <a href="/sep/Action/pigaisubmit.action?submitId=<s:property value="#sublist.id"/>">
                                 <s:property value="#sublist.grpId"/>
                             </a>
                         </th>
                         <th class="col-7">
-                            <a href="javascript:void(0)">
+                            <a href="/sep/Action/pigaisubmit.action?submitId=<s:property value="#sublist.id"/>">
                                 <s:iterator value="uploadedFiles[#status.index]">
                                     <s:property/>
                                 </s:iterator>
                             </a>
                         </th>
                         <th class="col-1">
-                            <a href="javascript:void(0)">
+                            <a href="/sep/Action/pigaisubmit.action?submitId=<s:property value="#sublist.id"/>">
                                 <s:property value="uploaderName[#status.index]"/>
                             </a>
                         </th>

@@ -13,11 +13,7 @@
 
     <!-- Assume test is the database name -->
     <property name="hibernate.connection.url">
-<<<<<<< HEAD
-      jdbc:mysql://localhost/hibernatetest?serverTimezone=GMT
-=======
       jdbc:mysql://localhost/hibernatetest?serverTimezone=UTC
->>>>>>> mk-dev
     </property>
     <property name="hibernate.connection.username">
       root

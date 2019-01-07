@@ -79,18 +79,18 @@
                 <tr class="row">
                     <s:iterator value="grpList" var="GroupInfo">
                         <td class="col-2">
-                            <a href="/sep/Action/flushSubmit.action?grpId=<s:property value="grpId"/>">
+                            <a href="javascript:void(0)">
 
                                 <s:property value="grpId"/>
                             </a>
                         </td>
                         <td class="col-2">
-                            <a href="/sep/Action/flushSubmit.action?grpId=<s:property value="grpId"/>">
+                            <a href="javascript:void(0)">
                                 <s:property value="leadername"/>
                             </a>
                         </td>
                         <td class="col-8">
-                            <a href="/sep/Action/flushSubmit.action?grpId=<s:property value="grpId"/>">
+                            <a href="javascript:void(0)">
                                 <s:property value="stulist"/>
                             </a>
                         </td>
