@@ -12,6 +12,7 @@ public class MySubmit{
     private Date date;
     private List<String> pathList = new ArrayList<String>();
     private boolean ranked=false;
+    private Integer uploaderId;
 
     public List<String> getPathList() {
         return pathList;
@@ -69,5 +70,13 @@ public class MySubmit{
 
     public void addPath(String path) {
         this.pathList.add(path);
+    }
+
+    public Integer getUploaderId() {
+        return uploaderId;
+    }
+
+    public void setUploaderId(Integer uploaderId) {
+        this.uploaderId = uploaderId;
     }
 }

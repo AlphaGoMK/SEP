@@ -125,6 +125,18 @@
                 <result name="success">/ShowStuList.jsp</result>
             </action>
 
+            <action name="listSubmission"
+                    class="sep.Action.ListSubmitAction"
+                    method="execute">
+                <result name="success">/ShowSubmission.jsp</result>
+            </action>
+
+            <action name="searchSubmission"
+                    class="sep.Action.SearchSubmissionAction"
+                    method="execute">
+                <result name="success">/ShowSubmission.jsp</result>
+            </action>
+
         </package>
 
         <package name="stajax" extends="json-default">

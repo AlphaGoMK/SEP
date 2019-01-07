@@ -28,8 +28,9 @@ public class SubmitHomeAction extends ActionSupport {
 
             ActionContext actionContext = ActionContext.getContext();
             Map session = actionContext.getSession();
+            Integer stuId = (Integer)session.get("USER_ID");
 
-            if (GroupDAO.submitHome((Integer)session.get("GROUP_ID"), hwName, destPath + hwFileFileName)) {
+            if (GroupDAO.submitHome((Integer)session.get("GROUP_ID"), hwName, destPath + hwFileFileName, stuId)) {
                 System.out.println("Submit success!");
                 return "success";
             } else {

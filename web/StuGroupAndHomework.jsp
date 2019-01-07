@@ -104,7 +104,7 @@
             <div id="groupAndHomeDiv">
             <s:if test="#has_group == 'true'">
                 <h3>Group <s:property value="g.groupId"/></h3>
-                <table class="table table-striped" style="font-size: 13px">
+                <table class="table table-striped" style="font-size: 13px; word-break:break-all; word-wrap:break-word;">
                     <thead>
                     <tr class="row">
                         <th class="col-1">作业名</th>

@@ -55,7 +55,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link " href="javascript:void(0)" id="checkHomeBtn">批改作业</a>
+                    <a class="nav-link " href="/sep/Action/listSubmission.action" id="checkHomeBtn">批改作业</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="/sep/Action/showStuList.action" id="showList">查看学生列表</a>
