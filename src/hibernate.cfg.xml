@@ -13,12 +13,13 @@
 
     <!-- Assume test is the database name -->
     <property name="hibernate.connection.url">
-      jdbc:mysql://localhost/hibernatetest
+      jdbc:mysql://localhost/hibernatetest?serverTimezone=UTC
     </property>
     <property name="hibernate.connection.username">
       root
     </property>
     <property name="hibernate.connection.password">
+      123456
     </property>
     <property name="hibernate.hbm2ddl.auto"> <!--Auto Create tables-->
       update

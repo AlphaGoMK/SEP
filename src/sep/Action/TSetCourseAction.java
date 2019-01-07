@@ -136,6 +136,7 @@ public class TSetCourseAction extends ActionSupport {
 //            }
             ca.createCourse(courseName, description, teacherId, maxcrew, mincrew);
             session.put("SELECTED", false);
+
             return "success";
         }
 
@@ -151,6 +152,7 @@ public class TSetCourseAction extends ActionSupport {
 
         ca.getCourseById(courseId).addHome(homeworkName, homeworkDesc, submitDDL, percentage);
 
+        System.out.println("set homework ok");
 
         return "success";
     }

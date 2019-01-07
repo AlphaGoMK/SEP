@@ -85,6 +85,7 @@
                     class="sep.Action.SubmitHomeAction"
                     method="execute">
                 <result name="success">/SubmitHomeSuccess.jsp</result>
+
                 <!--错误处理-->
             </action>
 
@@ -104,7 +105,7 @@
 	    <action name="teacherviewgrp"
                     class="sep.Action.TViewGroupAction"
                     method="execute">
-                <result name="success">/TViewGrp.jsp</result>
+                <result name="success">/TViewGrpLoad.jsp</result>
             </action>
 
             <action name="TeacherCreateCourse"
@@ -116,8 +117,26 @@
             <action name="TeacherCreateHomework"
                     class="sep.Action.TSetCourseAction"
                     method="createHomework">
+                <result name="success">/TViewGrpLoad.jsp</result>
+            </action>
+
+            <action name="flushGrp"
+                    class="sep.Action.TViewGroupAction"
+                    method="execute">
                 <result name="success">/TViewGrp.jsp</result>
             </action>
+
+            <action name="scorehomework"
+                    class="sep.Action.TPigaiSubmitAction"
+                    method="scoreSubmit">
+                <result name="success">/TRankSubmit.jsp</result>
+            </action>
+
+            <!--<action name="flushSubmit"-->
+                    <!--class="sep.Action.TViewGroupAction"-->
+                    <!--method="flushSubmitList">-->
+                <!--<result name="success">/_TViewHomework.jsp</result>-->
+            <!--</action>-->
             
         </package>
 
