@@ -69,8 +69,8 @@
             <table class="table table-striped">
                 <thead>
                 <tr class="row">
-                    <th class="col-1">组名</th>
-                    <th class="col-1">组长</th>
+                    <th class="col-2">组名</th>
+                    <th class="col-2">组长</th>
                     <th class="col-8">组员</th>
                 </tr>
                 </thead>
@@ -79,14 +79,20 @@
                 <tr class="row">
                     <s:iterator value="grpList" var="GroupInfo">
                         <td class="col-2">
-                            <s:property value="grpId"/>
+                            <a href="/sep/Action/flushSubmit.action?grpId=<s:property value="grpId"/>">
 
+                                <s:property value="grpId"/>
+                            </a>
                         </td>
                         <td class="col-2">
-                            <s:property value="leadername"/>
+                            <a href="/sep/Action/flushSubmit.action?grpId=<s:property value="grpId"/>">
+                                <s:property value="leadername"/>
+                            </a>
                         </td>
                         <td class="col-8">
-                            <s:property value="stulist"/>
+                            <a href="/sep/Action/flushSubmit.action?grpId=<s:property value="grpId"/>">
+                                <s:property value="stulist"/>
+                            </a>
                         </td>
 
                     </s:iterator>

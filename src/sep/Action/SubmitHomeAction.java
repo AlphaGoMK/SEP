@@ -7,7 +7,11 @@ import java.util.Map;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 import sep.Entity.*;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.http.HttpServletRequest;
 
 public class SubmitHomeAction extends ActionSupport {
 
@@ -20,14 +24,32 @@ public class SubmitHomeAction extends ActionSupport {
     public String execute()
     {
         /* Copy file to a safe location */
-        this.destPath = "C:/Workspace/Courses/Software Engineering/SEP/hw/";
+
+//        this.destPath = "C:/Workspace/Courses/Software Engineering/SEP/hw/";
+//        this.destPath = "/hw/";
+//        System.out.println("SUBMIT HOMEWORK");
+
+
+
         try{
+            HttpServletRequest request = ServletActionContext.getRequest();
+            ActionContext actionContext = ActionContext.getContext();
+            Map session = actionContext.getSession();
+
+            String absolutepath= request.getSession().getServletContext().getRealPath("/");
+            System.out.println("save file path "+absolutepath);
+
+            String relativepath = absolutepath+"..\\..\\..\\hw\\"+Integer.toString((int)session.get("GROUP_ID"))+"\\";
+            File myPath = new File(relativepath);
+
+            myPath.mkdirs();
+            this.destPath=relativepath;
+
             System.out.println(this.destPath + hwFileFileName);
             File destFile  = new File(destPath, hwFileFileName);
             FileUtils.copyFile(hwFile, destFile);
 
-            ActionContext actionContext = ActionContext.getContext();
-            Map session = actionContext.getSession();
+
 
             if (GroupDAO.submitHome((Integer)session.get("GROUP_ID"), hwName, destPath + hwFileFileName)) {
                 System.out.println("Submit success!");

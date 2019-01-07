@@ -145,4 +145,21 @@ public class GroupDAO {
         }
     }
 
+    public static MySubmit getSubmitById(Integer subId) {
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try {
+            tx = sess.beginTransaction();
+            MySubmit ms = (MySubmit) sess.get(MySubmit.class, subId);
+            tx.commit();
+            return ms;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return null;
+        } finally {
+            sess.close();
+        }
+    }
+
 }

@@ -82,45 +82,34 @@
             <table class="table table-striped">
                 <thead>
                 <tr class="row">
-                    <th class="col-1">作业名称</th>
-                    <th class="col-4">作业链接</th>
-                    <th class="col-2">作业提交时间</th>
+                    <th class="col-2">作业名称</th>
+                    <th class="col-4">提交文件名</th>
                     <th class="col-2">作业提交人</th>
-                    <th class="col-1">作业成绩</th>
+                    <th class="col-4">作业提交时间</th>
                 </tr>
                 </thead>
 
                 <tbody>
                 <tr class="row">
-                    <s:iterator value="grpList" var="GroupInfo">
-                        <td class="col-1">
-                            <s:property value="hwName"/>
-                            1
+                    <s:iterator value="submitList" var="SubmitInfo">
+                        <td class="col-2">
+                            <s:property value="homeworkname"/>
                         </td>
                         <td class="col-4">
-                            <s:property value="hwLinnk"/>
-                            2
+                            <s:property value="filename"/>
                         </td>
                         <td class="col-2">
-                            <s:property value="hwSubmitT"/>
-                            3
+                            <s:property value="uploader"/>
                         </td>
-                        <td class="col-2">
-                            <s:property value="hwSubmitP"/>
-                            4
-                        </td>
-                        <td class="col-1">
-                            <s:property value="hwScore"/>
-                            5
+                        <td class="col-4">
+                            <s:property value="submittime"/>
                         </td>
 
                     </s:iterator>
                 </tr>
                 </tbody>
             </table>
-            <button class="btn btn-primary">
-                提交
-            </button>
+
         </div>
         
 
