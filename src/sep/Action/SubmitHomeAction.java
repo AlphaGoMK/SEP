@@ -37,12 +37,14 @@ public class SubmitHomeAction extends ActionSupport {
             Map session = actionContext.getSession();
 
             String absolutepath= request.getSession().getServletContext().getRealPath("/");
-            System.out.println("save file path "+absolutepath);
 
-            String relativepath = absolutepath+"..\\..\\..\\hw\\"+Integer.toString((int)session.get("GROUP_ID"))+"\\";
+
+//            String relativepath = absolutepath+"..\\..\\..\\hw\\"+Integer.toString((int)session.get("GROUP_ID"))+"\\";
+            String relativepath=absolutepath+"\\hw\\"+Integer.toString((int)session.get("GROUP_ID"))+"\\";
+            System.out.println("save file path "+relativepath);
             File myPath = new File(relativepath);
 
-            myPath.mkdirs();
+            myPath.mkdir();
             this.destPath=relativepath;
 
             System.out.println(this.destPath + hwFileFileName);

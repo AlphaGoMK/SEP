@@ -108,10 +108,9 @@
 
                         <form class="form-horizontal" role="form" action="downloadhomework" id="downloadForm">
                             <div class="form-group">
-
-                                <button type="button" id="downloadhomeworkbtn" class="btn btn-info" onclick="downloadBtnFn()">
+                                <a href="<s:property value="downloadUrl"/>" download="<s:property value="grpId"/>_<s:property value="filename"/>">
                                     下载
-                                </button>
+                                </a>
                             </div>
                         </form>
                     </div>
@@ -131,12 +130,12 @@
                                 </div>
                                 <div class="col-md-4">
                                     <s:if test="#session.IS_RANKED == 1">
-                                        <button type="button" id="scorehomeworkbtn" class="btn btn-warning" disabled="disabled" onclick="scoreBtnFn()">
+                                        <button type="button" id="scorehomeworkbtn" class="btn btn-mute" disabled="disabled" onclick="scoreBtnFn()">
                                             评分
                                         </button>
                                     </s:if>
                                     <s:else>
-                                        <button type="button" id="scorehomeworkbtn" class="btn btn-warning" onclick="scoreBtnFn()">
+                                        <button type="button" id="scorehomeworkbtn" class="btn btn-danger" onclick="scoreBtnFn()">
                                             评分
                                         </button>
                                     </s:else>
@@ -161,14 +160,20 @@
 <script type="text/javascript">
     function downloadBtnFn(){
 
-        var a = document.createElement('a');
-        var url = '<s:property value="downloadUrl"/>';
-        var filename = '<s:property value="grpId"/>' +'_'+ '<s:property value="filename"/>';
-        window.alert(url);
+        <%--var $form = $('<form method="GET"></form>');--%>
+        <%--$form.attr('action', '<s:property value="downloadUrl"/>');--%>
+        <%--$form.appendTo($('body'));--%>
+        <%--$form.submit();--%>
 
-        a.href = url;
-        a.download = filename;
-        a.click();
+
+        <%--var a = document.createElement('a');--%>
+        <%--var url = <s:property value="downloadUrl"/>;--%>
+        <%--var filename = <s:property value="grpId"/> +'_'+ <s:property value="filename"/>;--%>
+
+
+        <%--a.href = url;--%>
+        <%--a.download = filename;--%>
+        <%--a.click();--%>
     }
     function scoreBtnFn(){
         document.getElementById('scoreForm').submit();

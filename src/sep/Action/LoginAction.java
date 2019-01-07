@@ -36,6 +36,7 @@ public class LoginAction extends ActionSupport {
             }
         }
 
+        System.out.println("test teacher");
         boolean test = false;
         // teacher check
         TeacherDAO tdao = new TeacherDAO();
@@ -43,6 +44,7 @@ public class LoginAction extends ActionSupport {
         test = tdao.checkExistence(id, this.passwd);
         if (test) {
 
+            System.out.println("teacher test OK");
             Teacher t = tdao.getTeacherbyId(id);
             session.put("USER_NAME", t.getName());
             session.put("USER_ID", t.getTeacherId());
