@@ -10,9 +10,34 @@ import java.util.List;
 import java.util.Map;
 
 public class ShowStuListAction extends ActionSupport {
-    Integer courseId;
-    List<StudentInfo> stuInfo;
-    List<Homework> hwList;
+    private Integer courseId;
+    private List<StudentInfo> stuInfo;
+
+    public Integer getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
+    }
+
+    public List<StudentInfo> getStuInfo() {
+        return stuInfo;
+    }
+
+    public void setStuInfo(List<StudentInfo> stuInfo) {
+        this.stuInfo = stuInfo;
+    }
+
+    public List<Homework> getHwList() {
+        return hwList;
+    }
+
+    public void setHwList(List<Homework> hwList) {
+        this.hwList = hwList;
+    }
+
+    private List<Homework> hwList;
 
     public String execute() {
         System.out.println("ShowStuListAction called.");
@@ -23,6 +48,7 @@ public class ShowStuListAction extends ActionSupport {
         }
         Course c = CourseDAO.getCoursebyId(courseId);
         hwList = c.getHomework();
+        stuInfo = new ArrayList<>();
 
         List<Student> stuLists = StudentDAO.getStudentByCourseId(courseId);
         for (Iterator i = stuLists.iterator(); i.hasNext(); ){
@@ -30,6 +56,7 @@ public class ShowStuListAction extends ActionSupport {
             StudentInfo sInfo = new StudentInfo();
             sInfo.setStuId(s.getStuId());
             sInfo.setName(s.getName());
+
             sInfo.setClassid(s.getClassid());
             List<Double> hwScore = new ArrayList<>();
             Integer grpId = s.getGroupmap().get(courseId);
@@ -49,12 +76,16 @@ public class ShowStuListAction extends ActionSupport {
                     }
                 }
             } else {
-                sInfo.setGrpContrib(-1.0);
+                sInfo.setGrpContrib(-2.0);
                 for (int idx = 0; idx < hwList.size(); idx++) {
-                    hwScore.add(0.0);
+                    hwScore.add(-1.0);
                 }
             }
+            sInfo.setHwScore(hwScore);
+            stuInfo.add(sInfo);
+            System.out.println(sInfo.getName() + sInfo.getGrpContrib().toString());
         }
+
         return "success";
     }
 }
