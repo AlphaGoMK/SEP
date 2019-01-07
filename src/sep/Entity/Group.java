@@ -131,7 +131,7 @@ public class Group {
     public int getSubmitNum(){
         return submit.size();
     }
-    public void addSubmit(String name, String path){    // add & modify // homework name -- homework path
+    public void addSubmit(String name, String path, Integer uploaderId){    // add & modify // homework name -- homework path
         MySubmit tmp;
         if (this.getSubmit().containsKey(name)) {
             tmp = this.getSubmit().get(name);
@@ -148,6 +148,7 @@ public class Group {
             tmp.setCourseId(this.getCourseID());
             tmp.setGrpId(this.getId());
             tmp.setHomeworkname(name);
+            tmp.setUploaderId(uploaderId);
         }
         this.submit.put(name, tmp);
     }

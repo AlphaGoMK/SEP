@@ -126,13 +126,49 @@ public class GroupDAO {
         }
     }
 
-    public static  boolean submitHome(Integer grpId, String hwName, String hwFilePath) {
+    public static MySubmit getSubmitById(Integer subId) {
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try {
+            tx = sess.beginTransaction();
+            MySubmit ms = (MySubmit) sess.get(MySubmit.class, subId);
+            tx.commit();
+            return ms;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return null;
+        } finally {
+            sess.close();
+        }
+    }
+
+    public static  boolean submitHome(Integer grpId, String hwName, String hwFilePath, Integer uploaderId) {
         Session sess = HibernateInit.getSession();
         Transaction tx = null;
         try {
             tx = sess.beginTransaction();
             Group grp = (Group)sess.get(Group.class, grpId);
-            grp.addSubmit(hwName, hwFilePath);
+            grp.addSubmit(hwName, hwFilePath, uploaderId);
+            sess.update(grp);
+            tx.commit();
+            return true;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
+            sess.close();
+        }
+    }
+
+    public static boolean addScore(Integer grpId, String hwName, Double score) {
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try {
+            tx = sess.beginTransaction();
+            Group grp = (Group)sess.get(Group.class, grpId);
+            grp.addScore(hwName, score);
             sess.update(grp);
             tx.commit();
             return true;

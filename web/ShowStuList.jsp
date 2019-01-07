@@ -30,7 +30,6 @@
             </br>
             <ul class="nav flex-column nav-pills">
                 <li class="nav-item" >
-
                     <a class="nav-link " href="javascript:void(0);" onclick="showGroup();">
                         查看小组
                     </a>
@@ -48,7 +47,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link " href="javascript:void(0)" id="checkHomeBtn">批改作业</a>
+                    <a class="nav-link " href="/sep/Action/listSubmission.action" id="checkHomeBtn">批改作业</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="/sep/Action/showStuList.action" id="showList">查看学生列表</a>
@@ -59,7 +58,7 @@
         <div class="col-md-10" id="showStuListDiv" style="display: block;">
             </br>
             </br>
-            <table class="table table-striped">
+            <table class="table table-striped" style="word-break:break-all; word-wrap:break-word;">
                 <thead>
                 <tr class="row">
                     <th class="col-1">姓名</th>

@@ -49,9 +49,9 @@ public class SubmitHomeAction extends ActionSupport {
             File destFile  = new File(destPath, hwFileFileName);
             FileUtils.copyFile(hwFile, destFile);
 
+            Integer stuId = (Integer)session.get("USER_ID");
 
-
-            if (GroupDAO.submitHome((Integer)session.get("GROUP_ID"), hwName, destPath + hwFileFileName)) {
+            if (GroupDAO.submitHome((Integer)session.get("GROUP_ID"), hwName, destPath + hwFileFileName, stuId)) {
                 System.out.println("Submit success!");
                 return "success";
             } else {

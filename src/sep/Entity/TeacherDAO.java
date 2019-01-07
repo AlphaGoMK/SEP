@@ -3,7 +3,10 @@ package sep.Entity;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.Date;
 import java.util.List;
 
 public class TeacherDAO {
@@ -117,6 +120,72 @@ public class TeacherDAO {
             if (tx != null) tx.rollback();
             e.printStackTrace();
             return false;
+        } finally {
+            sess.close();
+        }
+    }
+
+    public static boolean scoreHomework(Integer submitId, double score) {
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try{
+            tx = sess.beginTransaction();
+            MySubmit ms = (MySubmit)sess.get(MySubmit.class, submitId);
+            GroupDAO.addScore(ms.getGrpId(), ms.getHomeworkname(), score);
+            return false;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
+            sess.close();
+        }
+    }
+
+    public static List<MySubmit> searchSubmission(Integer courseId, String hwName, Integer grpId, Date startTime, Date endTime) {
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try{
+            tx = sess.beginTransaction();
+            String hql = "FROM MySubmit m WHERE m.courseId=" + courseId;
+
+            boolean has_startTime = (startTime != null);
+            boolean has_endTime = (endTime != null);
+            if (!hwName.equals("") || grpId!=null || has_startTime || has_endTime) {
+                if (!hwName.equals("")) {
+                    hql += " AND";
+                    hql += " m.homeworkname=:hwName";
+                }
+                if (grpId != null) {
+                    hql += " AND";
+                    hql += " m.grpId = " + grpId.toString();
+                }
+                if (has_startTime) {
+                    hql += " AND";
+                    hql += " m.date >= ?0";
+                }
+                if (has_endTime) {
+                    has_endTime = true;
+                    hql += " AND";
+                    hql += " m.date <= ?1";
+                }
+            }
+            Query q = sess.createQuery(hql);
+            if (!hwName.equals("")) {
+                q.setString("hwName", hwName);
+            }
+            if (has_startTime){
+                q.setDate(0, startTime);
+            }
+            if (has_endTime) {
+                q.setDate(1, endTime);
+            }
+            List<MySubmit> ms = q.list();
+            return ms;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return null;
         } finally {
             sess.close();
         }
