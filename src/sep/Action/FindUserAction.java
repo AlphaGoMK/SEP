@@ -18,7 +18,9 @@ public class FindUserAction extends ActionSupport {
     private adminAction op=new adminAction();
     private int flag; // 1 for teacher, 2 for student
     private InitInfo usr;
-    private String repwd;
+    private String name;
+    private String classid;
+    private boolean isTeacher;
     public String getUid() {
         return uid;
     }
@@ -36,8 +38,8 @@ public class FindUserAction extends ActionSupport {
         PrintWriter out = null;
 
         try{
-            flag=op.getUserType(Integer.parseInt(uid));
-            if(flag==1){
+
+            if(isTeacher){
                 Teacher t=op.getTeacherById(Integer.parseInt(uid));
             }
             else {
@@ -113,25 +115,11 @@ public class FindUserAction extends ActionSupport {
         response.setCharacterEncoding("UTF-8");//防止弹出的信息出现乱码
         PrintWriter out = null;
 
-        if(!repwd.equals(usr.getPassword())){
-            try{
-                out = response.getWriter();
-                out.print("<script>alert('Password Inconsistent')</script>");
-                out.print("<script>window.location.href='/AddUser.jsp'</script>");
-                out.flush();
-                out.close();
-            }catch(Exception e){
-                System.out.println("PrintWriter Error");
-                e.printStackTrace();
-            }
-            return "error";
-
-        }
 
         System.out.println(usr.getId());
 
         try{
-            if(op.getUserType(usr.getId())==1&&op.getTeacherById(usr.getId())!=null){
+            if(isTeacher&&op.getTeacherById(usr.getId())!=null){
                 out = response.getWriter();
                 out.print("<script>alert('Teacher Already Exists')</script>");
                 out.print("<script>window.location.href='/AddUser.jsp'</script>");
@@ -139,7 +127,7 @@ public class FindUserAction extends ActionSupport {
                 out.close();
                 return "error";
             }
-            else if(op.getUserType(usr.getId())==2&&op.getStudentById(usr.getId())!=null){
+            else if(!isTeacher&&op.getStudentById(usr.getId())!=null){
                 out = response.getWriter();
                 out.print("<script>alert('Student Already Exists')</script>");
                 out.print("<script>window.location.href='/AddUser.jsp'</script>");
@@ -148,7 +136,7 @@ public class FindUserAction extends ActionSupport {
                 return "error";
             }
             else{
-                op.addUser(usr);
+                op.addUser(isTeacher, usr);
                 return "success";
             }
         }catch(IOException e){
@@ -159,15 +147,32 @@ public class FindUserAction extends ActionSupport {
 
     }
 
-    public String getRepwd() {
-        return repwd;
-    }
-
-    public void setRepwd(String repwd) {
-        this.repwd = repwd;
-    }
 
     public void setOp(adminAction op) {
         this.op = op;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getClassid() {
+        return classid;
+    }
+
+    public void setClassid(String classid) {
+        this.classid = classid;
+    }
+
+    public boolean isTeacher() {
+        return isTeacher;
+    }
+
+    public void setTeacher(boolean teacher) {
+        isTeacher = teacher;
     }
 }

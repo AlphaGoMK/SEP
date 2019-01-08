@@ -201,5 +201,23 @@ public class StudentDAO {
         }
     }
 
+    public static boolean changePassword(Integer studentId, String passwd){
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try{
+            tx = sess.beginTransaction();
+            Student t = (Student)sess.get(Student.class, studentId);
+            t.setPassword(passwd);
+            sess.update(t);
+            tx.commit();
+            return true;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
+            sess.close();
+        }
+    }
 }
 

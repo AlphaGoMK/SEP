@@ -190,5 +190,24 @@ public class TeacherDAO {
             sess.close();
         }
     }
+
+    public static boolean changePassword(Integer teacherId, String passwd){
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try{
+            tx = sess.beginTransaction();
+            Teacher t = (Teacher)sess.get(Teacher.class, teacherId);
+            t.setPassword(passwd);
+            sess.update(t);
+            tx.commit();
+            return true;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
+            sess.close();
+        }
+    }
 }
 

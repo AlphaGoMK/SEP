@@ -18,6 +18,7 @@
                 <result name="teacher">/TeacherLoad.jsp</result>
                 <result name="student">/StudentMain.jsp</result>
                 <result name="admin">/AdminMain.jsp</result>
+                <result name="init">/CreatePassword.jsp</result>
                 <result name="error">/Error.jsp</result>
                 <result name="input">/Login.jsp</result>
                 <result name="success">/AdminMain.jsp</result>
@@ -136,7 +137,7 @@
             <action name="scorehomework"
                     class="sep.Action.TPigaiSubmitAction"
                     method="scoreSubmit">
-                <result name="success">/ShowSubmission.jsp</result>
+                <result name="success">/showSubmissionLoad.jsp</result>
             </action>
 
             <action name="pigaisubmit"
@@ -160,6 +161,27 @@
                     class="sep.Action.SearchSubmissionAction"
                     method="execute">
                 <result name="success">/ShowSubmission.jsp</result>
+            </action>
+
+            <action name="changepassword"
+                    class="sep.Action.LoginAction"
+                    method="changePassword">
+                <result name="success">/Login.jsp</result>
+                <result name="error">/CreatePassword.jsp</result>
+            </action>
+
+            <action name="teacheraddstudentlist"
+                    class="sep.Action.TViewGroupAction"
+                    method="uploadStuList">
+                <result name="success">/TViewGrpLoad.jsp</result>
+                <result name="error">/TViewGrpLoad.jsp</result>
+            </action>
+
+            <action name="teachersearchstudent"
+                    class="sep.Action.TViewGroupAction"
+                    method="searchStudent">
+                <result name="success">/TViewGrpLoad.jsp</result>
+                <result name="error">/TViewGrpLoad.jsp</result>
             </action>
 
         </package>
