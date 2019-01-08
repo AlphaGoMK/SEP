@@ -181,6 +181,25 @@ public class GroupDAO {
         }
     }
 
+    public static boolean addContrib(Integer grpId, Integer stuId, Double contrib) {
+        Session sess = HibernateInit.getSession();
+        Transaction tx = null;
+        try {
+            tx = sess.beginTransaction();
+            Group grp = (Group)sess.get(Group.class, grpId);
+            grp.setStuContrib(stuId, contrib);
+            sess.update(grp);
+            tx.commit();
+            return true;
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
+            sess.close();
+        }
+    }
+
 
 
 }

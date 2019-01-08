@@ -80,7 +80,7 @@
                     <a class="nav-link active"
                        href="/sep/Action/showGroupAndHome.action?courseId=<s:property value="courseId"/>"
                        onclick="showGroupAndHomeDiv()"
-                       id="hwInfoBtn">
+                       id="hwInfoBtn1">
                         作业信息
                     </a>
                 </li>
@@ -89,6 +89,7 @@
                         <a class="nav-link disabled">创建小组</a>
                     </s:if>
                     <s:else>
+                        <%--nav-link active 表示视觉上选中，href表示是否可以有链接，disable属性表示不可以点，nav-link disabled只是视觉上--%>
                         <a class="nav-link" onclick="showCreateGroup()"
                            href="javascript:void(0)"
                            id="createGroupBtn">
@@ -96,6 +97,17 @@
                         </a>
                     </s:else>
                 </li>
+
+                <li class="nav-item">
+                    <s:if test="#session.IS_LEADER == 1">
+                        <a class="nav-link" href="javascript:void(0)" onclick="showScoreOtherFn()" id="scoreotherBtn">组长评分</a>
+                    </s:if>
+                    <s:else>
+                        <a class="nav-link disabled" id="scoreotherBtn">组长评分</a>
+                    </s:else>
+                </li>
+
+
             </ul>
         </div>
         <div class="col-md-7">
@@ -302,6 +314,58 @@
                 </form>
                 <s:fielderror style="color: red"/>
             </div>
+
+            <div id="scoreOtherDiv" style="display: none;">
+
+                <table class="table table-striped" style="word-break:break-all; word-wrap:break-word;">
+                    <thead>
+                    <tr class="row">
+                        <th class="col-md-6">组员名</th>
+                        <th class="col-md-6">评分</th>
+
+                    </tr>
+                    </thead>
+
+                    <tr class="row">
+                        <td class="col-md-6">
+                            <a><s:property value="stulist"/></a>
+                        </td>
+                        <td class="col-md-6">
+                            <form class="form-inline" role="form" action="scoreother" id="scoreForm">
+                                <div class="form-group">
+                                    <div class="col-md-9">
+                                        <s:if test="#session.IS_SCORED == 1">
+                                            <a> <s:property value="scorelist"/> </a>
+                                        </s:if>
+                                        <s:else>
+                                            <input type="text" class="form-control" id="scorelistinput" name="scorelist" placeholder="得分"/>
+                                        </s:else>
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <s:if test="#session.IS_SCORED == 1">
+                                            <button type="button" id="scoreotherbtn" class="btn btn-mute" disabled="disabled">
+                                                组长评分
+                                            </button>
+                                        </s:if>
+                                        <s:else>
+                                            <button type="button" id="scoreotherbtn" class="btn btn-danger" onclick="scoreBtnFn()">
+                                                组长评分
+                                            </button>
+                                        </s:else>
+
+                                    </div>
+
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+
+                </table>
+
+
+            </div>
+
         </div>
         <div class="col-md-3">
             <br/>
@@ -325,6 +389,18 @@
 
 
 <script type="text/javascript">
+
+    function showScoreOtherFn(){
+        document.getElementById('scoreOtherDiv').style.display = "block";
+        document.getElementById('createGroupDiv').style.display = "none";
+        document.getElementById('groupAndHomeDiv').style.display = "none";
+        document.getElementById('scoreotherBtn').className = "nav-link active";
+        document.getElementById('createGroupBtn').className = "nav-link";
+        document.getElementById('hwInfoBtn1').setAttribute("class", "nav-link");
+    }
+    function scoreBtnFn(){
+        document.getElementById('scoreForm').submit();
+    }
     function showCreateGroup(){
         var createGroupDiv = document.getElementById('createGroupDiv');
         createGroupDiv.style.display = "block";
@@ -332,8 +408,10 @@
         showGroupAndHomeDiv.style.display = "none";
         var createGroupBtn = document.getElementById('createGroupBtn');
         createGroupBtn.className = "nav-link active";
-        var hwInfoBtn = document.getElementById('hwInfoBtn');
+        var hwInfoBtn = document.getElementById('hwInfoBtn1');
         hwInfoBtn.className = "nav-link";
+
+        document.getElementById('scoreotherBtn').className = "nav-link";
     }
     
     function showGroupAndHomeDiv() {
@@ -343,8 +421,10 @@
         showGroupAndHomeDiv.style.display = "block";
         var createGroupBtn = document.getElementById('createGroupBtn');
         createGroupBtn.className = "nav-link";
-        var hwInfoBtn = document.getElementById('hwInfoBtn');
+        var hwInfoBtn = document.getElementById('hwInfoBtn1');
         hwInfoBtn.className = "nav-link active";
+
+        document.getElementById('scoreotherBtn').className = "nav-link";
     }
 
     function nameDetermination(nameInput, idInput) {

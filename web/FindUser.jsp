@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <form action="FindUser">
+    <form action="adminFindUser">
         <input type="text" name="uid">
         <input type="submit" value="Search"/>
     </form>
