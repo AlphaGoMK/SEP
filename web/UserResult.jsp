@@ -14,11 +14,10 @@
 <body>
 
     User ID <s:property value="uid"/>
+    <br/>
     User Type <s:property value="flag"/>
-
-    <%--TODO: additional info to be added--%>
-
-    <%--TODO: QUESTIONED?--%>
+    <br/>
+    User Name
     <%--default value--%>
     <input type="text" value="${usr.getName()}"
            onfocus="if(value=='${usr.getName()}'){value=''}"

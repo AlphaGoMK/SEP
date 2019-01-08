@@ -16,11 +16,11 @@ import java.util.Set;
 public class FindUserAction extends ActionSupport {
     private String uid;
     private adminAction op=new adminAction();
-    private int flag; // 1 for teacher, 2 for student
+    private String flag; // 1 for teacher, 2 for student
     private InitInfo usr;
     private String name;
     private String classid;
-    private boolean isTeacher;
+    private boolean ateacher;
     public String getUid() {
         return uid;
     }
@@ -38,12 +38,16 @@ public class FindUserAction extends ActionSupport {
         PrintWriter out = null;
 
         try{
-
-            if(isTeacher){
+            ateacher=(flag.equals("teacher")?true:false);
+            System.out.println("Admin find user: ");
+            System.out.println(ateacher);
+            if(ateacher){
                 Teacher t=op.getTeacherById(Integer.parseInt(uid));
+                name=t.getName();
             }
             else {
                 Student s=op.getStudentById(Integer.parseInt(uid));
+                name=s.getName();
                 usr.setName(s.getName());
                 usr.setId(s.getStuId());
                 usr.setPassword(s.getPassword());
@@ -115,19 +119,22 @@ public class FindUserAction extends ActionSupport {
         response.setCharacterEncoding("UTF-8");//防止弹出的信息出现乱码
         PrintWriter out = null;
 
+        ateacher=(flag.equals("teacher")?true:false);
+        System.out.println("Admin add user:");
+        System.out.println(name);
+        System.out.println(flag);
+        System.out.println(ateacher);
 
-        System.out.println(usr.getId());
+        usr=new InitInfo();
+        usr.setName(name);
+        if(!ateacher){
+            usr.setAttr1(classid);
+            usr.setId(Integer.parseInt(uid));
+        }
+
 
         try{
-            if(isTeacher&&op.getTeacherById(usr.getId())!=null){
-                out = response.getWriter();
-                out.print("<script>alert('Teacher Already Exists')</script>");
-                out.print("<script>window.location.href='/AddUser.jsp'</script>");
-                out.flush();
-                out.close();
-                return "error";
-            }
-            else if(!isTeacher&&op.getStudentById(usr.getId())!=null){
+            if(!ateacher&&op.getStudentById(usr.getId())!=null){
                 out = response.getWriter();
                 out.print("<script>alert('Student Already Exists')</script>");
                 out.print("<script>window.location.href='/AddUser.jsp'</script>");
@@ -136,7 +143,8 @@ public class FindUserAction extends ActionSupport {
                 return "error";
             }
             else{
-                op.addUser(isTeacher, usr);
+                op.addUser(ateacher, usr);
+
                 return "success";
             }
         }catch(IOException e){
@@ -168,11 +176,20 @@ public class FindUserAction extends ActionSupport {
         this.classid = classid;
     }
 
-    public boolean isTeacher() {
-        return isTeacher;
+
+    public boolean isAteacher() {
+        return ateacher;
     }
 
-    public void setTeacher(boolean teacher) {
-        isTeacher = teacher;
+    public void setAteacher(boolean ateacher) {
+        this.ateacher = ateacher;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 }
