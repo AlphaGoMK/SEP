@@ -9,17 +9,83 @@
 <html>
 <head>
     <title>Add User</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style type="text/css">
+        #radioBtn .notActive{
+            color: #3276b1;
+            background-color: #fff;
+        }
+    </style>
 </head>
 <body>
 
+    <div class="loginmodal-container">
+        <form class="form-horizontal" role="form" action="AddUser">
+            <div class="form-group">
+                <label for="firstname" class="col-sm-4 col-md-4 control-label">账号</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="uid" id="firstname" placeholder="学号或工号">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastname" class="col-sm-4 col-md-4 control-label">姓名</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="name" id="lastname" placeholder="名字">
+                </div>
+            </div>
 
-    <form action="AddUser">
-        Id: <input type="text" name="usr.id"/>
-        Name: <input type="text" name="usr.name"/>
-        Password: <input id="pwd1" type="text" name="usr.password"/>
-        Confirm Password: <input id="pwd2" type="text" name="repwd"/>
-        <input type="submit" value="ADD" />
-    </form>
+            <div class="form-group">
+                <label for="happy" class="col-sm-4 col-md-4 control-label text-right">用户类别</label>
+                <div class="col-sm-7 col-md-7">
+                    <div class="input-group">
+                        <div id="radioBtn" class="btn-group">
+                            <a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="Y">老师</a>
+                            <a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="N">学生</a>
+                        </div>
+                        <input type="hidden" name="isTeacher" id="happy">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" id="selectClassDiv" style="display: none;">
+                <label for="maxcrew" class="col-sm-4 col-md-4 control-label">班级</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="classid" id="maxcrew" placeholder="班号">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-5 col-sm-4 col-md-4">
+                    <button type="submit" class="btn btn-default">创建</button>
+                </div>
+            </div>
+        </form>
+
+        <%--<form action="AddUser">--%>
+            <%--账号: <input type="text" name="usr.uid"/>--%>
+            <%--姓名: <input type="text" name="usr.name"/>--%>
+            <%--班级: <input type="text" name="usr.classid"/>--%>
+            <%--<input type="submit" value="添加"/>--%>
+        <%--</form>--%>
+    </div>
+
+        <script type="text/javascript">
+            $('#radioBtn a').on('click', function(){
+                var sel = $(this).data('title');
+                var tog = $(this).data('toggle');
+                $('#'+tog).prop('value', sel);
+                if (sel=="N"){
+                    document.getElementById('selectClassDiv').style.display = "block";
+                }
+                else{
+                    document.getElementById('selectClassDiv').style.display = "none";
+                }
+                $('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
+                $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
+            })
+        </script>
 
 </body>
 </html>

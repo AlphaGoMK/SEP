@@ -38,7 +38,7 @@
             <ul class="nav flex-column nav-pills">
                 <li class="nav-item" >
 
-                    <a class="nav-link " href="javascript:void(0);" onclick="showGroup();">
+                    <a class="nav-link disabled" href="javascript:void(0);" onclick="showGroup();">
                         查看小组
                     </a>
                 </li>
@@ -48,17 +48,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="javascript:void(0)" onclick="setHome()" id="setHomeBtn">设置作业</a>
+                    <a class="nav-link disabled" href="javascript:void(0)" onclick="setHome()" id="setHomeBtn">设置作业</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="javascript:void(0)" id="setStuBtn">设置学生名单</a>
+                    <a class="nav-link disabled" href="javascript:void(0)" id="setStuBtn">设置学生名单</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link " href="/sep/Action/listSubmission.action" id="checkHomeBtn">批改作业</a>
+                    <a class="nav-link active" href="/TViewGrpLoad.jsp" id="checkHomeBtn">退出查看作业</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/sep/Action/showStuList.action" id="showList">查看学生列表</a>
+                    <a class="nav-link disabled" href="javascript:void(0)" id="showList">查看学生列表</a>
                 </li>
             </ul>
         </div>

@@ -3,6 +3,7 @@ package sep.Action;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
 import sep.Entity.Course;
+import sep.Entity.CourseDAO;
 import sep.Model.adminAction;
 import sep.Model.courseAction;
 import com.opensymphony.xwork2.ActionSupport;
@@ -150,7 +151,7 @@ public class TSetCourseAction extends ActionSupport {
         System.out.println(submitDDL);
         System.out.println(percentage);
 
-        ca.getCourseById(courseId).addHome(homeworkName, homeworkDesc, submitDDL, percentage);
+        CourseDAO.addHomework(courseId, homeworkName, homeworkDesc, submitDDL, percentage);
 
         System.out.println("set homework ok");
 

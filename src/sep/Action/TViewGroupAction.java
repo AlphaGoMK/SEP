@@ -2,12 +2,20 @@ package sep.Action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 import sep.Entity.Group;
 import sep.Entity.GroupDAO;
 import sep.Entity.MySubmit;
 import sep.Entity.StudentDAO;
+import sep.Model.adminAction;
 import sep.Model.courseAction;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 
 class GroupInfo{
@@ -109,6 +117,14 @@ public class TViewGroupAction extends ActionSupport {
     private int teacherId;
     private List<GroupInfo> grpList;
     private courseAction ca=new courseAction();
+
+    private String listFileFileName;
+    private File listFile;
+
+    private String stuIdText;   // for search
+    private int stuId;          // for search
+
+
 //    private int grpId;
 //    private List<SubmitInfo> submitList;
 
@@ -131,7 +147,10 @@ public class TViewGroupAction extends ActionSupport {
     public String execute(){
         ActionContext actionContext = ActionContext.getContext();
         Map session = actionContext.getSession();
-        session.put("COURSE_ID", courseId);
+        if(!session.containsKey("COURSE_ID")){
+            session.put("COURSE_ID", courseId);
+        }
+
         session.put("SELECTED", 1);
         teacherId=(int)session.get("USER_ID");
         grpList=new ArrayList<GroupInfo>();
@@ -147,6 +166,7 @@ public class TViewGroupAction extends ActionSupport {
         System.out.println("length: "+Integer.toString(gp.size()));
         return "success";
     }
+
 
 //    public String flushSubmitList(){
 //        ActionContext actionContext = ActionContext.getContext();
@@ -179,6 +199,144 @@ public class TViewGroupAction extends ActionSupport {
         this.ca = ca;
     }
 
+
+    public String getStuIdText() {
+        return stuIdText;
+    }
+
+    public void setStuIdText(String stuIdText) {
+        this.stuIdText = stuIdText;
+    }
+
+    public int getStuId() {
+        return stuId;
+    }
+
+    public void setStuId(int stuId) {
+        this.stuId = stuId;
+    }
+
+    public File getListFile() {
+        return listFile;
+    }
+
+    public void setListFile(File listFile) {
+        this.listFile = listFile;
+    }
+
+    public String uploadStuList() throws Exception{
+
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setContentType("text/html;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");//防止弹出的信息出现乱码
+        PrintWriter out = null;
+
+        try{
+            HttpServletRequest request = ServletActionContext.getRequest();
+            ActionContext actionContext = ActionContext.getContext();
+            Map session = actionContext.getSession();
+
+
+
+            courseId=(int)session.get("COURSE_ID");
+            teacherId=(int)session.get("USER_ID");
+
+            adminAction aa=new adminAction();
+
+            String absolutepath= request.getSession().getServletContext().getRealPath("/");
+
+
+//            String relativepath = absolutepath+"..\\..\\..\\hw\\"+Integer.toString((int)session.get("GROUP_ID"))+"\\";
+            String relativepath=absolutepath+"stuList\\";
+            System.out.println("save file path "+relativepath);
+            File myPath = new File(relativepath);
+            myPath.mkdir();
+
+
+            System.out.println(relativepath + listFileFileName);
+            File destFile  = new File(relativepath, listFileFileName);
+            FileUtils.copyFile(listFile, destFile);
+
+
+            if (aa.importStuList(courseId, relativepath+listFileFileName)) {
+                System.out.println("Import success!");
+
+                out = response.getWriter();
+                out.print("<script>alert('导入学生名单成功')</script>");
+                out.print("<script>window.location.href='/sep/Action/showStuList.action'</script>");
+                out.flush();
+                out.close();
+
+                return "success";
+            } else {
+
+                out = response.getWriter();
+                out.print("<script>alert('导入失败')</script>");
+                out.print("<script>window.location.href='/TViewGrp.jsp'</script>");
+                out.flush();
+                out.close();
+
+                return "error";
+            }
+        }catch(IOException e){
+
+            out = response.getWriter();
+            out.print("<script>alert('导入失败')</script>");
+            out.print("<script>window.location.href='/TViewGrp.jsp'</script>");
+            out.flush();
+            out.close();
+
+            e.printStackTrace();
+            return "error";
+        }
+    }
+
+    public String searchStudent() throws Exception{
+
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setContentType("text/html;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");//防止弹出的信息出现乱码
+        PrintWriter out = null;
+
+        try{
+            HttpServletRequest request = ServletActionContext.getRequest();
+            ActionContext actionContext = ActionContext.getContext();
+            Map session = actionContext.getSession();
+
+            courseId=(int)session.get("COURSE_ID");
+            stuId=Integer.parseInt(stuIdText);
+            System.out.println("Add student ");
+            System.out.println(stuId);
+            System.out.println(courseId);
+            StudentDAO.takeCourse(stuId, courseId);
+
+            out = response.getWriter();
+            out.print("<script>alert('加入成功')</script>");
+            out.print("<script>window.location.href='/sep/Action/showStuList.action'</script>");
+            out.flush();
+            out.close();
+
+            return "success";
+        }catch(Exception e){
+
+            out = response.getWriter();
+            out.print("<script>alert('加入失败')</script>");
+            out.print("<script>window.location.href='/TViewGrp.jsp'</script>");
+            out.flush();
+            out.close();
+
+            return "error";
+        }
+
+    }
+
+    public String getListFileFileName() {
+        return listFileFileName;
+    }
+
+    public void setListFileFileName(String listFileFileName) {
+        this.listFileFileName = listFileFileName;
+    }
 //    public int getGrpId() {
 //        return grpId;
 //    }

@@ -38,20 +38,20 @@
             <ul class="nav flex-column nav-pills">
                 <li class="nav-item" >
 
-                    <a class="nav-link " href="javascript:void(0);" onclick="showGroup();">
+                    <a class="nav-link active" href="javascript:void(0);" id="showGroupBtn" onclick="showGroup();">
                         查看小组
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="javascript:void(0);" >
+                    <a class="nav-link disabled" href="javascript:void(0);">
                         创建课程
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="javascript:void(0)" onclick="setHome()" id="setHomeBtn">设置作业</a>
+                    <a class="nav-link " href="javascript:void(0)" id="setHomeBtn" onclick="setHome()">设置作业</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="javascript:void(0)" id="setStuBtn">设置学生名单</a>
+                    <a class="nav-link " href="javascript:void(0)" id="setStuBtn" onclick="setList()">设置学生名单</a>
                 </li>
 
                 <li class="nav-item">
@@ -100,7 +100,6 @@
                 </tbody>
             </table>
         </div>
-
 
         <div class="col-md-10" id="setHomeDiv" style="display: none;">
             </br>
@@ -158,27 +157,52 @@
             </form>
         </div>
 
+        <div class="col-md-10" id="addStuDiv" style="display: none;">
+            </br>
+            </br>
+
+            <div class="row">
+                <div class="col-md-4" />
+                <div class="col-md-4">
+                    <form class="form-inline" action="teachersearchstudent.action">
+                        <div class="form-group">
+                            <label for="stuIdInput">学号</label>
+                            <input type="text" class="form-control" name="stuIdText" id="stuIdInput" placeholder="请输入学号">
+                        </div>
+                        <button type="submit" class="btn btn-default">添加</button>
+                    </form>
+                </div>
+                <div class="col-md-4"/>
+            </div>
+
+
+            <div class="row" id="teacheraddstudentlist">
+
+                <form action="teacheraddstudentlist.action" method="post" enctype="multipart/form-data">
+                    <input type="file" name="listFile" id="file2" class="inputfile" />
+                    <label for="file2" id="file2Label">选择提交文件</label>
+                    <br/>
+                    <input type="submit" value="上传" />
+                </form>
+
+            </div>
+
+        </div>
+
     </div>
     <s:debug/>
 </div>
 
 <script type="text/javascript">
-    function createCourse(){
-        var createGroupDiv = document.getElementById('createCourseDiv');
-        createGroupDiv.style.display = "block";
-        document.getElementById('showGroupDiv').style.display = "none";
-        document.getElementById('setHomeDiv').style.display = "none";
-        document.getElementById('setHomeBtn').setAttribute("class","nav-link");
-        document.getElementById('setStuBtn').setAttribute("class","nav-link");
-        document.getElementById('checkHomeBtn').setAttribute("class","nav-link");
-        document.getElementById('showList').setAttribute("class","nav-link");
-
-        flushCourseFn();
-    }
 
     function showGroup() {
-        document.getElementById('setHomeDiv').style.display = "none";
         document.getElementById('showGroupDiv').style.display = "block";
+        document.getElementById('setHomeDiv').style.display = "none";
+        document.getElementById('addStuDiv').style.display = "none";
+        document.getElementById('showGroupBtn').setAttribute("class","nav-link active");
+        document.getElementById('setHomeBtn').setAttribute("class","nav-link");
+        document.getElementById('setStuBtn').setAttribute("class","nav-link");
+
     }
 
     function flushCourseFn()
@@ -188,9 +212,21 @@
     }
 
     function setHome(){
-
-        document.getElementById('showGroupDiv').style.display = "none";
         document.getElementById('setHomeDiv').style.display = "block";
+        document.getElementById('showGroupDiv').style.display = "none";
+        document.getElementById('addStuDiv').style.display = "none";
+        document.getElementById('setHomeBtn').setAttribute("class","nav-link active");
+        document.getElementById('showGroupBtn').setAttribute("class","nav-link");
+        document.getElementById('setStuBtn').setAttribute("class","nav-link");
+    }
+
+    function setList(){
+        document.getElementById('addStuDiv').style.display = "block";
+        document.getElementById('showGroupDiv').style.display = "none";
+        document.getElementById('setHomeDiv').style.display = "none";
+        document.getElementById('setStuBtn').setAttribute("class","nav-link active");
+        document.getElementById('showGroupBtn').setAttribute("class","nav-link");
+        document.getElementById('setHomeBtn').setAttribute("class","nav-link");
     }
 
     // 创建完成/选择完成后在出现btn

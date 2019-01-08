@@ -4,10 +4,7 @@ package sep.Model;
 import com.sun.org.apache.xerces.internal.xs.StringList;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
-import sep.Entity.Student;
-import sep.Entity.StudentDAO;
-import sep.Entity.Teacher;
-import sep.Entity.TeacherDAO;
+import sep.Entity.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -31,8 +28,13 @@ class InitExcel{
                 InitInfo eInfo = new InitInfo();
                 eInfo.setIndex(row.getRowNum());
                 eInfo.setId((int)row.getCell(0).getNumericCellValue());
-                eInfo.setName(row.getCell(1).getStringCellValue());
-                eInfo.setAttr1(row.getCell(2).getStringCellValue());
+                if(row.getPhysicalNumberOfCells()>1){
+                    eInfo.setName(row.getCell(1).getStringCellValue());
+                }
+                if(row.getPhysicalNumberOfCells()>2){
+                    eInfo.setAttr1(row.getCell(2).getStringCellValue());
+                }
+
                 System.out.println(eInfo);
                 result.add(eInfo);
             }
@@ -52,6 +54,23 @@ class InitExcel{
 public class adminAction {
 
     InitExcel op=new InitExcel();
+
+    public boolean importStuList(int courseId, String excelfile) throws IOException{
+        List<InitInfo> res=new ArrayList<InitInfo>();
+        try{
+            res=op.importExcel(excelfile);
+
+            System.out.println("Excel Row Number "+Integer.toString(res.size()));
+
+            for(int i=0;i<res.size();i++){
+                StudentDAO.takeCourse(res.get(i).getId(), courseId);
+            }
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     public void importTeacher(String excelfile) throws IOException{
         List<InitInfo> res=new ArrayList<InitInfo>();
@@ -175,8 +194,8 @@ public class adminAction {
         }
     }
 
-    public String addUser(InitInfo i){
-        if(getUserType(i.getId())==1){
+    public String addUser(boolean isT, InitInfo i){
+        if(isT){
             // TODO: DAO t
         }
         else{

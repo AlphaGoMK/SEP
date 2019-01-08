@@ -29,6 +29,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-2">
+            </br>
+            <span class="badge badge-default">欢迎,<s:property value="#session.USER_NAME"/></span>
+            </br>
             <ul class="nav flex-column nav-pills">
                 <li class="nav-item" >
                     <a class="nav-link disabled" href="javascript:void(0);" onclick="showGroup();">
@@ -48,7 +51,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="javascript:void(0)" id="checkHomeBtn">批改作业</a>
+                    <a class="nav-link active" href="/sep/Action/listSubmission.action" id="checkHomeBtn">退出批改作业</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="javascript:void(0)" id="showList">查看学生列表</a>
