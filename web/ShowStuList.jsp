@@ -64,8 +64,9 @@
                     <th class="col-1">姓名</th>
                     <th class="col-1">班级</th>
                     <th class="col-1">学号</th>
-                    <th class="col-7">作业成绩</th>
-                    <th class="col-2">组长打分</th>
+                    <th class="col-3">作业成绩</th>
+                    <th class="col-3">组长打分</th>
+                    <th class="col-3">最终成绩</th>
                 </tr>
                 </thead>
 
@@ -75,7 +76,8 @@
                         <td class="col-1"><s:property value="#info.name"/></td>
                         <td class="col-1"><s:property value="#info.stuId"/></td>
                         <td class="col-1"><s:property value="#info.classid"/></td>
-                        <td class="col-7">
+                        <td class="col-3">
+
                             <s:iterator value="hwList" var="hw" status="status">
                                 <s:property value="#hw.name"/>:
                                 <s:set var="score" value="#info.hwScore[#status.index]"/>
@@ -87,7 +89,7 @@
                                 </s:else>
                             </s:iterator>
                         </td>
-                        <td class="col-2">
+                        <td class="col-3">
                             <s:set var="contrib" value="#info.grpContrib"/>
                             <s:if test="#contrib == -1.0">
                                 暂无评价
@@ -97,6 +99,14 @@
                             </s:elseif>
                             <s:else>
                                 <s:property value="#info.grpContrib"/>
+                            </s:else>
+                        </td>
+                        <td class="col-3">
+                            <s:if test="#info.allscore == 0.0">
+                                暂无总成绩
+                            </s:if>
+                            <s:else>
+                                <s:property value="#info.result"/>
                             </s:else>
                         </td>
                     </s:iterator>

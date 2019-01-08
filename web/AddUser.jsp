@@ -22,8 +22,27 @@
 <body>
 
     <div class="loginmodal-container">
-        <form class="form-horizontal" role="form" action="AddUser">
+        <form class="form-horizontal" role="form" action="AddUser" onsubmit="checkRadioFn()">
+
             <div class="form-group">
+                <label for="happy" class="col-sm-4 col-md-4 control-label text-right">选择用户类别</label>
+                <div class="col-sm-7 col-md-7">
+                    <div class="input-group">
+                        <div id="radioBtnDiv" class="btn-group">
+
+                            <input id="radioBtn1" type="radio" name="flag" value="teacher" onclick="clickTeaFn()"/>
+                            <label for="radioBtn1">老师</label>
+                            <input id="radioBtn2" type="radio" name="flag" value="student" onclick="clickStuFn()"/>
+                            <label for="radioBtn2">学生</label>
+                            <%--<a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="Y">老师</a>--%>
+                            <%--<a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="N">学生</a>--%>
+                        </div>
+                        <input type="hidden" name="uid" id="happy">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" id="uidDiv" style="display: none;">
                 <label for="firstname" class="col-sm-4 col-md-4 control-label">账号</label>
                 <div class="input-group">
                     <input type="text" class="form-control" name="uid" id="firstname" placeholder="学号或工号">
@@ -36,18 +55,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="happy" class="col-sm-4 col-md-4 control-label text-right">用户类别</label>
-                <div class="col-sm-7 col-md-7">
-                    <div class="input-group">
-                        <div id="radioBtn" class="btn-group">
-                            <a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="Y">老师</a>
-                            <a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="N">学生</a>
-                        </div>
-                        <input type="hidden" name="isTeacher" id="happy">
-                    </div>
-                </div>
-            </div>
+
 
             <div class="form-group" id="selectClassDiv" style="display: none;">
                 <label for="maxcrew" class="col-sm-4 col-md-4 control-label">班级</label>
@@ -72,19 +80,36 @@
     </div>
 
         <script type="text/javascript">
-            $('#radioBtn a').on('click', function(){
-                var sel = $(this).data('title');
-                var tog = $(this).data('toggle');
-                $('#'+tog).prop('value', sel);
-                if (sel=="N"){
-                    document.getElementById('selectClassDiv').style.display = "block";
+            function clickTeaFn(){
+                document.getElementById('selectClassDiv').style.display = "none";
+                document.getElementById('uidDiv').style.display = "none";
+            }
+            function clickStuFn(){
+                document.getElementById('selectClassDiv').style.display = "block";
+                document.getElementById('uidDiv').style.display = "block";
+            }
+            function checkRadioFn() {
+                var radiobtn=document.getElementByName('flag');
+                if(!radiobtn[0].checked&&!radiobtn[1].checked){
+                    alert("请选择身份");
+                    window.location = "/AddUser.jsp";
                 }
-                else{
-                    document.getElementById('selectClassDiv').style.display = "none";
-                }
-                $('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
-                $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
-            })
+            }
+            // $('#radioBtn a').on('click', function(){
+            //     var sel = $(this).data('title');
+            //     var tog = $(this).data('toggle');
+            //     $('#'+tog).prop('value', sel);
+            //     if (sel=="N"){
+            //         document.getElementById('selectClassDiv').style.display = "block";
+            //         document.getElementById('uidDiv').style.display = "block";
+            //     }
+            //     else{
+            //         document.getElementById('selectClassDiv').style.display = "none";
+            //         document.getElementById('uidDiv').style.display = "none";
+            //     }
+            //     $('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
+            //     $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
+            // })
         </script>
 
 </body>

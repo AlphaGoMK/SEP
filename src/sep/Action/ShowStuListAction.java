@@ -59,6 +59,7 @@ public class ShowStuListAction extends ActionSupport {
 
             sInfo.setClassid(s.getClassid());
             List<Double> hwScore = new ArrayList<>();
+            List<Double> hwPer = new ArrayList<>();
             Integer grpId = s.getGroupmap().get(courseId);
             if (grpId != null) {
                 double contrib = -1.0;
@@ -71,17 +72,23 @@ public class ShowStuListAction extends ActionSupport {
                     Homework hw = (Homework) h.next();
                     if (g.getScore().containsKey(hw.getName())) {
                         hwScore.add(g.getScore().get(hw.getName()));
+                        hwPer.add(CourseDAO.getCoursebyId(courseId).getHomeByName(hw.getName()).getPercentage());
                     } else {
                         hwScore.add(-1.0);
                     }
                 }
+
             } else {
                 sInfo.setGrpContrib(-2.0);
                 for (int idx = 0; idx < hwList.size(); idx++) {
                     hwScore.add(-1.0);
+
                 }
             }
             sInfo.setHwScore(hwScore);
+            sInfo.setHwPercentage(hwPer);
+            System.out.println("ALL SCORE :");
+            System.out.println(sInfo.calcAllscore());
             stuInfo.add(sInfo);
             System.out.println(sInfo.getName() + sInfo.getGrpContrib().toString());
         }

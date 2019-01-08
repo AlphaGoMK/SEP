@@ -196,10 +196,10 @@ public class adminAction {
 
     public String addUser(boolean isT, InitInfo i){
         if(isT){
-            // TODO: DAO t
+            TeacherDAO.addTeacher(i.getName());
         }
         else{
-            // TODO: DAO s
+            StudentDAO.addStudentAndId(i.getId(), i.getName(), i.getAttr1());
         }
         return "success";
     }

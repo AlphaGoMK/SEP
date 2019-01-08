@@ -151,7 +151,7 @@ public class TSetCourseAction extends ActionSupport {
         System.out.println(submitDDL);
         System.out.println(percentage);
 
-        CourseDAO.addHomework(courseId, homeworkName, homeworkDesc, submitDDL, percentage);
+        CourseDAO.addHomework(courseId, homeworkName, homeworkDesc, submitDDL, percentage/100.0);
 
         System.out.println("set homework ok");
 
