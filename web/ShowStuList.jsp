@@ -62,8 +62,8 @@
                 <thead>
                 <tr class="row">
                     <th class="col-1">姓名</th>
-                    <th class="col-1">班级</th>
                     <th class="col-1">学号</th>
+                    <th class="col-1">班级</th>
                     <th class="col-3">作业成绩</th>
                     <th class="col-3">组长打分</th>
                     <th class="col-3">最终成绩</th>

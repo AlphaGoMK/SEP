@@ -24,7 +24,7 @@ class GroupInfo{
     private String stulist;
 
     public GroupInfo(Group g){
-        this.grpId=g.getGroupId();
+        this.grpId=Integer.toString(g.getId());
         this.leadername= StudentDAO.getStudentbyId(g.getLeaderId()).getName();
         this.stulist="";
         Set<Integer> ss=g.getStulist();

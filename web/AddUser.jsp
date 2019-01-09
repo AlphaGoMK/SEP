@@ -25,7 +25,7 @@
         <form class="form-horizontal" role="form" action="AddUser" onsubmit="checkRadioFn()">
 
             <div class="form-group">
-                <label for="happy" class="col-sm-4 col-md-4 control-label text-right">选择用户类别</label>
+                <label class="col-sm-4 col-md-4 control-label text-right">选择用户类别</label>
                 <div class="col-sm-7 col-md-7">
                     <div class="input-group">
                         <div id="radioBtnDiv" class="btn-group">
@@ -37,7 +37,6 @@
                             <%--<a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="Y">老师</a>--%>
                             <%--<a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="N">学生</a>--%>
                         </div>
-                        <input type="hidden" name="uid" id="happy">
                     </div>
                 </div>
             </div>
