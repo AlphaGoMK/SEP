@@ -7,6 +7,11 @@ Tested at Windows 10(1803) + Chrome 71.0, and deployed on Tomcat 9.0.14.
 More info at [Github repository](https://github.com/AlphaGoMK/SEP)  
 [Watch demo1](https://www.youtube.com/watch?v=IzyZ3fYSOd4&feature=youtu.be)  
 
+### Usage  
+* Open project in Intellij Idea, and add artifact: Spring, Struts2 and Hibernate.
+* Import [libs] in project structure, add modules and facets.
+* Configure tomcat server.
+
 Our jar libs are listed below
 > antlr-2.7.7.jar  
 > aopalliance-1.0.jar  
