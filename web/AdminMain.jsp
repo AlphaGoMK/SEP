@@ -14,10 +14,10 @@
 
     <script type="text/javascript">
         function initTeacher(){
-            window.location = "/InitTeacher.jsp";
+            window.location = "/AdminInitTeacher.jsp";
         }
         function initStu(){
-            window.location = "/InitStudent.jsp";
+            window.location = "/AdminInitStudent.jsp";
         }
         function addUser(){
             window.location.replace("/AddUser.jsp");
@@ -29,10 +29,10 @@
 
     <form action="selectAdminAction">
         <label>Select your action</label>
-        <input type="button" name="ACT0" value="Init Teacher" onclick="initTeacher()"/>
-        <input type="button" name="ACT1" value="Init Student" onclick="initStu()"/>
-        <input type="button" name="ACT2" value="Add User" onclick="addUser()"/>
-        <input type="button" name="ACT4" value="Find User" onclick="findUser()"/>
+        <input type="button" name="ACT0" value="初始化老师" onclick="initTeacher()"/>
+        <input type="button" name="ACT1" value="初始化学生" onclick="initStu()"/>
+        <input type="button" name="ACT2" value="添加用户" onclick="addUser()"/>
+        <input type="button" name="ACT4" value="查找用户" onclick="findUser()"/>
     </form>
 
     <br/>

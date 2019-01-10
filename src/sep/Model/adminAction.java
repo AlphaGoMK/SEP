@@ -38,11 +38,11 @@ class InitExcel{
                 System.out.println(eInfo);
                 result.add(eInfo);
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        } finally {
             in.close();
         }
+        System.out.println(result.size());
         return result;
     }
 
@@ -81,7 +81,9 @@ public class adminAction {
         }
 
         if(res!=null){
-            //TODO: teacher DAO
+            for(int i=0;i<res.size();i++){
+                TeacherDAO.addTeacher(res.get(i).getName());
+            }
         }
     }
 
@@ -92,9 +94,13 @@ public class adminAction {
         } catch(Exception e){
             e.printStackTrace();
         }
-
+        System.out.println(res.size());
         if(res!=null){
-            //TODO: stu DAO
+            for(int i=0;i<res.size();i++){
+                StudentDAO.addStudentAndId(res.get(i).getId(),res.get(i).getName(),res.get(i).getAttr1());
+            }
+            System.out.println("admin add student");
+            System.out.println(res.size());
         }
     }
 

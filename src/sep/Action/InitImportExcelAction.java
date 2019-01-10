@@ -71,6 +71,7 @@ public class InitImportExcelAction extends ActionSupport {
     }
 
     public String importStudent() throws Exception {
+        op=new adminAction();
         HttpServletResponse response = ServletActionContext.getResponse();
 
         response.setContentType("text/html;charset=UTF-8");
@@ -78,7 +79,7 @@ public class InitImportExcelAction extends ActionSupport {
         response.setCharacterEncoding("UTF-8");//防止弹出的信息出现乱码
 
         PrintWriter out = null;
-
+        System.out.println("hahaha");
         try {
 
             op.importStudent(excelfilename);

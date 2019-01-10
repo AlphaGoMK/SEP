@@ -11,7 +11,7 @@
     <title>Init Student</title>
 </head>
 <body>
-    <form action="initStudent">
+    <form action="AdminInitStudentList.action">
         <label>Please enter student filename</label><br/>
         <input type="text" name="excelfilename"/>
         <input type="submit" value="OK"/>

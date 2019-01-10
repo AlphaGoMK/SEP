@@ -6,11 +6,6 @@
 <struts>
         <constant name="struts.devMode" value="true" />
         <package name="SEP" extends="struts-default">
-            <action name="hello"
-                    class="sep.Action.HelloWorldAction"
-                    method="execute">
-                <result name="success">/HelloWorld.jsp</result>
-            </action>
 
             <action name="login"
                     class="sep.Action.LoginAction"
@@ -24,12 +19,6 @@
                 <result name="success">/AdminMain.jsp</result>
             </action>
 
-            <action name="select"
-                    class="sep.Action.SelectAction"
-                    method="execute">
-                <result name="success">/Login.jsp</result>
-                <result name="error">/Error.jsp</result>
-            </action>
 
             <action name="showCourse"
                     class="sep.Action.ShowCourseAction"
@@ -49,10 +38,10 @@
 
             </action>
 
-            <action name="initStudent"
+            <action name="AdminInitStudentList"
                     class="sep.Action.InitImportExcelAction"
                     method="importStudent">
-
+                <result name="success">/AdminMain.jsp</result>
             </action>
 
             <action name="adminFindUser"
@@ -145,11 +134,6 @@
                     method="execute">
                 <result name="success">/TRankSubmit.jsp</result>
             </action>
-            <!--<action name="flushSubmit"-->
-                    <!--class="sep.Action.TViewGroupAction"-->
-                    <!--method="flushSubmitList">-->
-                <!--<result name="success">/_TViewHomework.jsp</result>-->
-            <!--</action>-->
             
             <action name="listSubmission"
                     class="sep.Action.ListSubmitAction"
