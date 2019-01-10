@@ -5,7 +5,7 @@ Software Engineering Programming Assignment.
 We implemented a student-teacher management system using java SSH framework.  
 Tested at Windows 10(1803) + Chrome 71.0, and deployed on Tomcat 9.0.14.  
 More info at [Github repository](https://github.com/AlphaGoMK/SEP)  
-[Watch demo1](https://www.youtube.com/watch?v=IzyZ3fYSOd4&feature=youtu.be)  
+[Watch demo](https://www.bilibili.com/video/av40398850/)  
 
 ### Usage  
 * Open project in Intellij Idea, and add artifact: Spring, Struts2 and Hibernate.
